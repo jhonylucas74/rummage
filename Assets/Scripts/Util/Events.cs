@@ -1,12 +1,14 @@
 using UnityEngine;
 
 public static class Events {
-    public static IntEvent OnSetPlayerTurn;
+    public static GameConfigEvent OnGameStart;
+    public static SimpleEvent OnNextPlayerTurn;
     public static SimpleEvent OnCheckHand;
     public static SimpleEvent OnEmptyHand;
     public static SimpleEvent OnFindHand;
 }
 
+public delegate void GameConfigEvent(GameConfig config);
 public delegate void SimpleEvent();
 public delegate void IntEvent(int i);
 public delegate void FloatEvent(float f);
