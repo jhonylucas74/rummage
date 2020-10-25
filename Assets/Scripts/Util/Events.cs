@@ -2,6 +2,9 @@ using UnityEngine;
 
 public static class Events {
     public static IntEvent OnSetPlayerTurn;
+    public static SimpleEvent OnCheckHand;
+    public static SimpleEvent OnEmptyHand;
+    public static SimpleEvent OnFindHand;
 }
 
 public delegate void SimpleEvent();
