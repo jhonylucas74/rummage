@@ -17,6 +17,7 @@ public class TurnsUI : MonoBehaviour
     public Color noneCardColor;
     public Color checkCardColor;
     public Color sucessCardColor;
+
     void Start() {
         Events.OnNextPlayerTurn += OnNextPlayerTurn;
         Events.OnCheckHand += OnCheckHand;

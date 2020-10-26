@@ -6,6 +6,11 @@ public static class Events {
     public static SimpleEvent OnCheckHand;
     public static SimpleEvent OnEmptyHand;
     public static SimpleEvent OnFindHand;
+    // UI click events
+    public static SimpleEvent OnInitialMenu;
+    public static SimpleEvent OnAvatarsMenu;
+
+    public static IntEvent OnAvatarSelect;
 }
 
 public delegate void GameConfigEvent(GameConfig config);
