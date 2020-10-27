@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 
-public class ConnectionManager : MonoBehaviour {
+public class ConnectionManager : Singleton<ConnectionManager> {
     private SocketIOComponent socket;
     string sessionId;
-    bool isHost = false;
+    public bool isHost = false;
     int playerAvatar = 0;
     string playerName = "";
 
@@ -196,6 +196,11 @@ public class ConnectionManager : MonoBehaviour {
                 Debug.LogWarning("no player");
             });
         }
+    }
+
+    public void UpdatePlayers()
+    {
+
     }
 
     public void NewGameState (SocketIOEvent e) {

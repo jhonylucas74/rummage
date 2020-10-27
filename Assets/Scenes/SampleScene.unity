@@ -1105,7 +1105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 3}
       propertyPath: url
-      value: ws://127.0.0.1:3000/socket.io/?EIO=4&transport=websocket
+      value: https://rummage-server.herokuapp.com/
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 3}
@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eac20fa4ba00194689f38c9708e8063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHost: 0
 --- !u!1 &1389995315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557507823}
-  m_LocalRotation: {x: 0.00025314608, y: 0.9952801, z: 0.0025971853, w: -0.09700935}
+  m_LocalRotation: {x: 0.00025314465, y: 0.9952801, z: 0.002597171, w: -0.09700932}
   m_LocalPosition: {x: -0.87294614, y: -0.742779, z: 2.950407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

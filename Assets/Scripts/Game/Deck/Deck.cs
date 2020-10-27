@@ -32,7 +32,7 @@ public class Deck
             cardHandler = Addressables.LoadAssetAsync<Card>(references[i]);
             await cardHandler.Task;
 
-            AddCard(cardHandler.Result.Type, cardHandler.Result);
+            AddCard(cardHandler.Result.Data.Type, cardHandler.Result);
         }
 
         Events.OnDeckReady?.Invoke();

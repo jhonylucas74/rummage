@@ -7,13 +7,13 @@ public class Player {
     public string id;
     public int avatar;
 
-    List<Card> _cards;
-    public List<Card> Cards { get => _cards; }
+    List<CardData> _cards;
+    public List<CardData> Cards { get => _cards; }
 
     public Player(string pid) {
         id = pid;
 
-        _cards = new List<Card>();
+        _cards = new List<CardData>();
     }
 
     public Player(JSONObject obj) {
