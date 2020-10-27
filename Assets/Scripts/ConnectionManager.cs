@@ -18,6 +18,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On("error", OnError);
 		socket.On("close", OnClose);
         socket.On("updatedPlayers", OnUpdatedPlayers);
+        socket.On("updateGameCards", OnUpdateGameCards);
         // socket.On("newGameState", NewGameState);
         Events.OnCreateSession += OnCreateSession;
         Events.OnAvatarSelect += OnAvatarSelect;
@@ -157,7 +158,40 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         DispatchPlayers();
     }
 
-    void DispatchPlayers () {
+    public void DispatchGameCards(List<Card> cards)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        JSONObject cardsArray = new JSONObject(JSONObject.Type.ARRAY);
+
+        for (int i = 0; i < cards.Count; i++)
+        {
+            JSONObject obj = new JSONObject(JSONObject.Type.OBJECT);
+            obj.AddField("card", cards[i].Data.Name);
+            cardsArray.Add(obj);
+        }
+
+        data.AddField("cards", cardsArray);
+        socket.Emit("updateGameCards", data);
+    }
+
+    void OnUpdateGameCards(SocketIOEvent e)
+    {
+        if (_isHost) return;
+
+        e.data.GetField("cards", delegate (JSONObject obj)
+        {
+            List<string> cards = new List<string>();
+            foreach (JSONObject j in obj.list)
+            {
+                cards.Add(j.GetField("card").str);
+            }
+
+            Events.OnGameCardsReceived?.Invoke(cards);
+        });
+    }
+
+    public void DispatchPlayers () {
         JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
         data.AddField("sessionId", sessionId);
         JSONObject playersArray = new JSONObject(JSONObject.Type.ARRAY);

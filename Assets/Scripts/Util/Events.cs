@@ -19,8 +19,11 @@ public static class Events {
     public static PlayersEvent OnPlayersUpdate;
 
     public static SimpleEvent OnDeckReady;
+
+    public static ListStringEvent OnGameCardsReceived;
 }
 
+public delegate void ListStringEvent(List<string> list);
 public delegate void PlayersEvent(List<Player> players);
 public delegate void GameStateEvent(GameState state);
 public delegate void SimpleEvent();
