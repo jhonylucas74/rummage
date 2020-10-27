@@ -10,6 +10,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     int playerAvatar = 0;
     string playerName = "";
     bool _isHost = false;
+    string _userId;
     public bool IsHost { get => _isHost; }
 
     void Start () {
@@ -18,6 +19,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On("error", OnError);
 		socket.On("close", OnClose);
         socket.On("updatedPlayers", OnUpdatedPlayers);
+        socket.On("onJoinSucess", OnJoinSucess);
         // socket.On("newGameState", NewGameState);
         Events.OnCreateSession += OnCreateSession;
         Events.OnAvatarSelect += OnAvatarSelect;
@@ -73,6 +75,16 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
         data.AddField("sessionId", sessionId);
         socket.Emit("join", data);
+    }
+
+    void OnJoinSucess (SocketIOEvent e) {
+        e.data.GetField("userId", delegate(JSONObject data) {
+            Events.OnAvatarsMenu?.Invoke();
+            _userId = data.str;
+            Debug.Log("sucess join: " + _userId);
+        }, delegate(string name) {
+            Debug.LogWarning("no game sessions");
+        });
     }
 
     void OnWaitingMenu () {
