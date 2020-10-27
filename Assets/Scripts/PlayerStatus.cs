@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerStatus : MonoBehaviour
-{
+public class PlayerStatus : MonoBehaviour {
     public int position = 0;
     TMP_Text mtext;
+
     void Start() {
         Events.OnPlayersUpdate += OnPlayersUpdate;
         mtext = GetComponent<TMP_Text>();

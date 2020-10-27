@@ -16,7 +16,7 @@ public class _GameManager : MonoBehaviour {
         socket.On("newSession", NewSession);
         socket.On("error", OnError);
 		socket.On("close", OnClose);
-        // socket.On("joinupdate", Joinupdate);
+        socket.On("updatedPlayers", OnUpdatedPlayers);
         // socket.On("newGameState", NewGameState);
         Events.OnCreateSession += OnCreateSession;
         Events.OnAvatarSelect += OnAvatarSelect;
@@ -46,7 +46,9 @@ public class _GameManager : MonoBehaviour {
 
     void OnCreateSession () {
         socket.Emit("createSession");
-        socket.On("updateAvatar", OnUpdateAvatar);
+        socket.On("joinupdate", Joinupdate);
+        socket.On("updatedAvatar", OnUpdateAvatar);
+        players.Clear();
         isHost = true;
     }
 
@@ -63,6 +65,9 @@ public class _GameManager : MonoBehaviour {
     }
 
     void OnJoinSession () {
+        isHost = false;
+        players.Clear();
+
         Debug.Log("join session: " + sessionId);
         JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
         data.AddField("sessionId", sessionId);
@@ -73,14 +78,21 @@ public class _GameManager : MonoBehaviour {
         if (isHost) {
             players[0].name = playerName;
             players[0].avatar = playerAvatar;
-            Events.OnPlayersUpdate?.Invoke(players);
+             StartCoroutine(UpdateWaitingMenu());
         } else {
             JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
             data.AddField("name", playerName);
             data.AddField("avatar", playerAvatar);
+            data.AddField("sessionId", sessionId);
 
             socket.Emit("updateAvatar", data);
         }
+    }
+
+    IEnumerator UpdateWaitingMenu() {
+        yield return new WaitForSeconds(1);
+        Events.OnPlayersUpdate?.Invoke(players);
+        Events.OnSessionChange?.Invoke(sessionId);
     }
 
     void accessData(JSONObject obj){
@@ -117,6 +129,7 @@ public class _GameManager : MonoBehaviour {
     public void NewSession (SocketIOEvent e) {
         e.data.GetField("sessionId", delegate(JSONObject data) {
             sessionId = data.str;
+            Events.OnSessionChange?.Invoke(data.str);
             players.Add(new Player("host"));
             Debug.Log(sessionId);
         }, delegate(string name) {
@@ -130,17 +143,51 @@ public class _GameManager : MonoBehaviour {
         string name = e.data.list[1].str;
         int avatar = (int) e.data.list[2].n;
 
+        Debug.Log("new avatar update" + name);
+
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        JSONObject playersArray = new JSONObject(JSONObject.Type.ARRAY);
+
+        data.AddField("sessionId", sessionId);
+
         for (int i = 0; i < players.Count; i++) {
             if (players[i].id == id) {
                 players[i].name = name;
                 players[i].avatar = avatar;
             }
+
+            JSONObject player = new JSONObject(JSONObject.Type.ARRAY);
+            player.Add(players[i].id);
+            player.Add(players[i].name);
+            player.Add(players[i].avatar);
+            playersArray.Add(player);
         }
 
         Events.OnPlayersUpdate?.Invoke(players);
+        data.AddField("players", playersArray);
+        socket.Emit("updatePlayers", data);
+    }
+
+    public void OnUpdatedPlayers (SocketIOEvent e) {
+        if (isHost) return;
+
+        e.data.GetField("players", delegate(JSONObject obj) {
+            players.Clear();
+
+            foreach(JSONObject j in obj.list){
+                players.Add(new Player(j));
+            }
+
+            Events.OnPlayersUpdate?.Invoke(players);
+            Debug.Log("updated players list.");
+        }, delegate(string name) {
+            Debug.LogWarning("no players");
+        });
     }
 
     public void Joinupdate (SocketIOEvent e) {
+        Debug.Log("receive new join");
+
         if (players.Count < 8) {
             e.data.GetField("userId", delegate(JSONObject data) {
                 players.Add(new Player(data.str));
@@ -155,7 +202,7 @@ public class _GameManager : MonoBehaviour {
 
     }
 
-    void Update() {   
+    /*void Update() {   
         if (Input.GetKeyDown("space")){
             Events.OnNextPlayerTurn?.Invoke();
         }
@@ -175,5 +222,5 @@ public class _GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.D)){
             Events.OnFindHand?.Invoke();
         }
-    }
+    }*/
 }

@@ -17,7 +17,7 @@ public static class Events {
     public static IntEvent OnAvatarSelect;
     public static StringEvent OnPlayerNameChange;
     public static StringEvent OnSessionChange;
-    public static  PlayersEvent OnPlayersUpdate;
+    public static PlayersEvent OnPlayersUpdate;
 }
 
 public delegate void PlayersEvent(List<Player> players);
