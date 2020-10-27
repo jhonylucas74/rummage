@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 
-public class ConnectionManager : Singleton<ConnectionManager> {
+public class ConnectionManager : MonoBehaviour {
     private SocketIOComponent socket;
     string sessionId;
+    bool isHost = false;
     int playerAvatar = 0;
     string playerName = "";
-    bool _isHost = false;
-    public bool IsHost { get => _isHost; }
 
     void Start () {
         socket = GetComponent<SocketIOComponent>();
@@ -50,7 +49,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On("joinupdate", Joinupdate);
         socket.On("updatedAvatar", OnUpdateAvatar);
         GameManager.Instance.Players.Clear();
-        _isHost = true;
+        isHost = true;
     }
 
     void OnAvatarSelect (int avatar) {
@@ -66,7 +65,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     }
 
     void OnJoinSession () {
-        _isHost = false;
+        isHost = false;
         GameManager.Instance.Players.Clear();
 
         Debug.Log("join session: " + sessionId);
@@ -76,10 +75,10 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     }
 
     void OnWaitingMenu () {
-        if (_isHost) {
+        if (isHost) {
             GameManager.Instance.Players[0].name = playerName;
             GameManager.Instance.Players[0].avatar = playerAvatar;
-             StartCoroutine(UpdateWaitingMenu());
+            StartCoroutine(UpdateWaitingMenu());
         } else {
             JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
             data.AddField("name", playerName);
@@ -146,31 +145,32 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
         Debug.Log("new avatar update" + name);
 
-        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
-        JSONObject playersArray = new JSONObject(JSONObject.Type.ARRAY);
-
-        data.AddField("sessionId", sessionId);
-
         for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
             if (GameManager.Instance.Players[i].id == id) {
                 GameManager.Instance.Players[i].name = name;
                 GameManager.Instance.Players[i].avatar = avatar;
             }
-
-            JSONObject player = new JSONObject(JSONObject.Type.ARRAY);
-            player.Add(GameManager.Instance.Players[i].id);
-            player.Add(GameManager.Instance.Players[i].name);
-            player.Add(GameManager.Instance.Players[i].avatar);
-            playersArray.Add(player);
         }
 
         Events.OnPlayersUpdate?.Invoke(GameManager.Instance.Players);
+        DispatchPlayers();
+    }
+
+    void DispatchPlayers () {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        JSONObject playersArray = new JSONObject(JSONObject.Type.ARRAY);
+
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
+            playersArray.Add(GameManager.Instance.Players[i].getJSON());
+        }
+
         data.AddField("players", playersArray);
         socket.Emit("updatePlayers", data);
     }
 
     public void OnUpdatedPlayers (SocketIOEvent e) {
-        if (_isHost) return;
+        if (isHost) return;
 
         e.data.GetField("players", delegate(JSONObject obj) {
             GameManager.Instance.Players.Clear();
@@ -197,11 +197,6 @@ public class ConnectionManager : Singleton<ConnectionManager> {
                 Debug.LogWarning("no player");
             });
         }
-    }
-
-    public void UpdatePlayers()
-    {
-
     }
 
     public void NewGameState (SocketIOEvent e) {
