@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +17,8 @@ public static class Events {
     public static StringEvent OnPlayerNameChange;
     public static StringEvent OnSessionChange;
     public static PlayersEvent OnPlayersUpdate;
+
+    public static SimpleEvent OnDeckReady;
 }
 
 public delegate void PlayersEvent(List<Player> players);

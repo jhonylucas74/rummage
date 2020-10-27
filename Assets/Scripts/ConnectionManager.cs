@@ -1,15 +1,15 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 
-public class _GameManager : MonoBehaviour {
+public class ConnectionManager : MonoBehaviour {
     private SocketIOComponent socket;
     string sessionId;
     bool isHost = false;
     int playerAvatar = 0;
     string playerName = "";
-    List<Player> players = new List<Player>();
 
     void Start () {
         socket = GetComponent<SocketIOComponent>();
@@ -48,7 +48,7 @@ public class _GameManager : MonoBehaviour {
         socket.Emit("createSession");
         socket.On("joinupdate", Joinupdate);
         socket.On("updatedAvatar", OnUpdateAvatar);
-        players.Clear();
+        GameManager.Instance.Players.Clear();
         isHost = true;
     }
 
@@ -66,7 +66,7 @@ public class _GameManager : MonoBehaviour {
 
     void OnJoinSession () {
         isHost = false;
-        players.Clear();
+        GameManager.Instance.Players.Clear();
 
         Debug.Log("join session: " + sessionId);
         JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
@@ -76,8 +76,8 @@ public class _GameManager : MonoBehaviour {
 
     void OnWaitingMenu () {
         if (isHost) {
-            players[0].name = playerName;
-            players[0].avatar = playerAvatar;
+            GameManager.Instance.Players[0].name = playerName;
+            GameManager.Instance.Players[0].avatar = playerAvatar;
              StartCoroutine(UpdateWaitingMenu());
         } else {
             JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
@@ -91,7 +91,7 @@ public class _GameManager : MonoBehaviour {
 
     IEnumerator UpdateWaitingMenu() {
         yield return new WaitForSeconds(1);
-        Events.OnPlayersUpdate?.Invoke(players);
+        Events.OnPlayersUpdate?.Invoke(GameManager.Instance.Players);
         Events.OnSessionChange?.Invoke(sessionId);
     }
 
@@ -130,7 +130,7 @@ public class _GameManager : MonoBehaviour {
         e.data.GetField("sessionId", delegate(JSONObject data) {
             sessionId = data.str;
             Events.OnSessionChange?.Invoke(data.str);
-            players.Add(new Player("host"));
+            GameManager.Instance.Players.Add(new Player("host"));
             Debug.Log(sessionId);
         }, delegate(string name) {
             Debug.LogWarning("no game sessions");
@@ -150,20 +150,20 @@ public class _GameManager : MonoBehaviour {
 
         data.AddField("sessionId", sessionId);
 
-        for (int i = 0; i < players.Count; i++) {
-            if (players[i].id == id) {
-                players[i].name = name;
-                players[i].avatar = avatar;
+        for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
+            if (GameManager.Instance.Players[i].id == id) {
+                GameManager.Instance.Players[i].name = name;
+                GameManager.Instance.Players[i].avatar = avatar;
             }
 
             JSONObject player = new JSONObject(JSONObject.Type.ARRAY);
-            player.Add(players[i].id);
-            player.Add(players[i].name);
-            player.Add(players[i].avatar);
+            player.Add(GameManager.Instance.Players[i].id);
+            player.Add(GameManager.Instance.Players[i].name);
+            player.Add(GameManager.Instance.Players[i].avatar);
             playersArray.Add(player);
         }
 
-        Events.OnPlayersUpdate?.Invoke(players);
+        Events.OnPlayersUpdate?.Invoke(GameManager.Instance.Players);
         data.AddField("players", playersArray);
         socket.Emit("updatePlayers", data);
     }
@@ -172,13 +172,13 @@ public class _GameManager : MonoBehaviour {
         if (isHost) return;
 
         e.data.GetField("players", delegate(JSONObject obj) {
-            players.Clear();
+            GameManager.Instance.Players.Clear();
 
             foreach(JSONObject j in obj.list){
-                players.Add(new Player(j));
+                GameManager.Instance.Players.Add(new Player(j));
             }
 
-            Events.OnPlayersUpdate?.Invoke(players);
+            Events.OnPlayersUpdate?.Invoke(GameManager.Instance.Players);
             Debug.Log("updated players list.");
         }, delegate(string name) {
             Debug.LogWarning("no players");
@@ -188,9 +188,9 @@ public class _GameManager : MonoBehaviour {
     public void Joinupdate (SocketIOEvent e) {
         Debug.Log("receive new join");
 
-        if (players.Count < 8) {
+        if (GameManager.Instance.Players.Count < 8) {
             e.data.GetField("userId", delegate(JSONObject data) {
-                players.Add(new Player(data.str));
+                GameManager.Instance.Players.Add(new Player(data.str));
                 Debug.Log("new player in session: " + data.str);
             }, delegate(string name) {
                 Debug.LogWarning("no player");
