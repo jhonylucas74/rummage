@@ -5,6 +5,7 @@ public class Card : MonoBehaviour
     public CardData Data;
 }
 
+[System.Serializable]
 public class CardData
 {
     public CardType Type;

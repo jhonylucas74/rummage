@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
         Events.OnGameCardsReceived += OnGameCardsReceived;
     }
 
-    private void Start()
+    public void StartMatch()
     {
         _deck = new Deck();
     }
