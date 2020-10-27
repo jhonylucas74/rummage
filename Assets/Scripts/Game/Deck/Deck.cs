@@ -56,16 +56,27 @@ public class Deck
 
     public Card GetCard(CardType type)
     {
+        Queue<Card> deck;
+
         switch (type)
         {
             case CardType.Location:
-                return _locationsDeck.Dequeue();
+                deck = _locationsDeck;
+                break;
             case CardType.Weapon:
-                return _weaponsDeck.Dequeue();
+                deck = _weaponsDeck;
+                break;
             case CardType.Culprit:
-                return _culpritsDeck.Dequeue();
+                deck = _culpritsDeck;
+                break;
             default:
-                return null;
+                deck = null;
+                break;
         }
+
+        if (deck == null || deck.Count <= 0)
+            return null;
+
+        return deck.Dequeue();
     }
 }

@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
         _gameCards.Add(_deck.GetCard(CardType.Weapon));
         _gameCards.Add(_deck.GetCard(CardType.Culprit));
 
-        if (ConnectionManager.Instance.isHost)
+        if (ConnectionManager.Instance.IsHost)
         {
             foreach (Player player in Players)
             {
