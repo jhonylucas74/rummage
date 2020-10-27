@@ -9,7 +9,8 @@ public static class Events {
     // UI click events
     public static SimpleEvent OnInitialMenu;
     public static SimpleEvent OnAvatarsMenu;
-
+    public static SimpleEvent OnWaitingMenu;
+    public static SimpleEvent OnJoinMenu;
     public static IntEvent OnAvatarSelect;
 }
 

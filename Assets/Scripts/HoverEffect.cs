@@ -9,7 +9,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [System.Serializable]
     public enum ClickEventType {
         OnInitialMenu,
-        OnAvatarsMenu
+        OnAvatarsMenu,
+        OnWaitingMenu,
+        OnJoinMenu
     }
 
     public ClickEventType clickEvent;
@@ -29,6 +31,12 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 break;
             case ClickEventType.OnAvatarsMenu:
                 Events.OnAvatarsMenu?.Invoke();
+                break;
+            case ClickEventType.OnWaitingMenu:
+                Events.OnWaitingMenu?.Invoke();
+                break;
+            case ClickEventType.OnJoinMenu:
+                Events.OnJoinMenu?.Invoke();
                 break;
         }
     }
