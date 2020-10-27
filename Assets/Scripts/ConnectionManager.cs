@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
 
-public class ConnectionManager : MonoBehaviour {
+public class ConnectionManager : Singleton<ConnectionManager> {
     private SocketIOComponent socket;
     string sessionId;
-    bool isHost = false;
     int playerAvatar = 0;
     string playerName = "";
+    bool _isHost = false;
+    public bool IsHost { get => _isHost; }
 
     void Start () {
         socket = GetComponent<SocketIOComponent>();
@@ -49,7 +50,7 @@ public class ConnectionManager : MonoBehaviour {
         socket.On("joinupdate", Joinupdate);
         socket.On("updatedAvatar", OnUpdateAvatar);
         GameManager.Instance.Players.Clear();
-        isHost = true;
+        _isHost = true;
     }
 
     void OnAvatarSelect (int avatar) {
@@ -65,7 +66,7 @@ public class ConnectionManager : MonoBehaviour {
     }
 
     void OnJoinSession () {
-        isHost = false;
+        _isHost = false;
         GameManager.Instance.Players.Clear();
 
         Debug.Log("join session: " + sessionId);
@@ -75,7 +76,7 @@ public class ConnectionManager : MonoBehaviour {
     }
 
     void OnWaitingMenu () {
-        if (isHost) {
+        if (_isHost) {
             GameManager.Instance.Players[0].name = playerName;
             GameManager.Instance.Players[0].avatar = playerAvatar;
             StartCoroutine(UpdateWaitingMenu());
@@ -170,7 +171,7 @@ public class ConnectionManager : MonoBehaviour {
     }
 
     public void OnUpdatedPlayers (SocketIOEvent e) {
-        if (isHost) return;
+        if (_isHost) return;
 
         e.data.GetField("players", delegate(JSONObject obj) {
             GameManager.Instance.Players.Clear();
