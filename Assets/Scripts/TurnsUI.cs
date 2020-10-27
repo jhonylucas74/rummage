@@ -46,7 +46,7 @@ public class TurnsUI : MonoBehaviour
         Events.OnGameStart -= OnGameStart;
     }
 
-    void OnGameStart (GameConfig config) {
+    void OnGameStart (GameState state) {
         for (int i = 0; i < playersImages.Length; i++) {
             playAppearTween(playersTransforms[i], i * 0.05f);
         }

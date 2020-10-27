@@ -11,7 +11,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         OnInitialMenu,
         OnAvatarsMenu,
         OnWaitingMenu,
-        OnJoinMenu
+        OnJoinMenu,
+        OnCreateSession,
+        OnJoinSession
     }
 
     public ClickEventType clickEvent;
@@ -29,6 +31,10 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             case ClickEventType.OnInitialMenu:
                 Events.OnInitialMenu?.Invoke();
                 break;
+            case ClickEventType.OnCreateSession:
+                Events.OnCreateSession?.Invoke();
+                Events.OnAvatarsMenu?.Invoke();
+                break;
             case ClickEventType.OnAvatarsMenu:
                 Events.OnAvatarsMenu?.Invoke();
                 break;
@@ -37,6 +43,10 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 break;
             case ClickEventType.OnJoinMenu:
                 Events.OnJoinMenu?.Invoke();
+                break;
+            case ClickEventType.OnJoinSession:
+                Events.OnJoinSession?.Invoke();
+                Events.OnAvatarsMenu?.Invoke();
                 break;
         }
     }

@@ -18,7 +18,7 @@ public class NotesUI : MonoBehaviour
         Events.OnGameStart -= OnGameStart;
     }
 
-    void OnGameStart (GameConfig config) {
+    void OnGameStart (GameState state) {
         DOTween.To(() => uiTransform.anchoredPosition, xy => uiTransform.anchoredPosition = xy, finalPosition, 0.5f)
         .SetEase(Ease.OutBack);
     }

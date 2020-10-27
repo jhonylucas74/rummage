@@ -15,7 +15,7 @@ public class _CAMManager : MonoBehaviour
         Events.OnGameStart -= OnGameStart;
     }
 
-    void OnGameStart (GameConfig config) {
+    void OnGameStart (GameState config) {
         general.m_Priority = 1;
         window.m_Priority = 1;
         building.m_Priority = 10;
