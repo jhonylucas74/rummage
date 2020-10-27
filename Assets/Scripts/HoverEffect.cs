@@ -46,7 +46,6 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 break;
             case ClickEventType.OnJoinSession:
                 Events.OnJoinSession?.Invoke();
-                Events.OnAvatarsMenu?.Invoke();
                 break;
         }
     }
