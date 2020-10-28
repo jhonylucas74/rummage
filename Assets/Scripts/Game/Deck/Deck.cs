@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
@@ -25,14 +26,16 @@ public class Deck
         references.AddRange(handler.Result.Culprits);
         references.Shuffle();
 
-        AsyncOperationHandle<Card> cardHandler;
+        AsyncOperationHandle<GameObject> cardHandler;
 
         for (int i = 0; i < references.Count; i++)
         {
-            cardHandler = Addressables.LoadAssetAsync<Card>(references[i]);
+            cardHandler = Addressables.LoadAssetAsync<GameObject>(references[i]);
             await cardHandler.Task;
 
-            AddCard(cardHandler.Result.Data.Type, cardHandler.Result);
+            Card card = cardHandler.Result.GetComponent<Card>();
+
+            AddCard(card.Data.Type, card);
         }
 
         Events.OnDeckReady?.Invoke();

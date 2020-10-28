@@ -17,8 +17,62 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 306eb7367322a5543b57504778244217
   m_SerializeEntries:
+  - m_GUID: 26eab41ff1f05d146b2f9fcc6c0aeaa9
+    m_Address: ciclano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2b0427929ff36e94983bc17e2b68c28b
+    m_Address: apto1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 41e29ddc9e1f3b1489b00ae72426389c
+    m_Address: faca
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4db18df6ea089dd4d936a23c19fc2a2a
+    m_Address: apto3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 53d8b042dc8203c40a78217bd78e6ced
     m_Address: DeckLibrary
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 75ec8387eacef6e4184148189f411eea
+    m_Address: triclano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 816b089be6ed5624ab47f19de98feebb
+    m_Address: namao
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 9438402c94cfd294e8c821d40359c1bf
+    m_Address: apto2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cd3bbf49a5b7fb3479763652b0adef38
+    m_Address: fulano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e8b7ab57a3dc42443b3936198a8aed38
+    m_Address: trabuco
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

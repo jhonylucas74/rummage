@@ -1266,7 +1266,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557507823}
-  m_LocalRotation: {x: 0.00025314497, y: 0.9952801, z: 0.0025971737, w: -0.09700935}
+  m_LocalRotation: {x: 0.00025314762, y: 0.9952801, z: 0.0025972005, w: -0.09700937}
   m_LocalPosition: {x: -0.87294614, y: -0.742779, z: 2.950407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2060,6 +2060,10 @@ PrefabInstance:
     - target: {fileID: 3308889382977847796, guid: 55b4b32c36245044ba7cb353e018091b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -101.8999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225386034165114092, guid: 55b4b32c36245044ba7cb353e018091b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6279609112383330802, guid: 55b4b32c36245044ba7cb353e018091b, type: 3}
       propertyPath: m_fontColor.r
