@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Cards
+  m_EditorClassIdentifier: 
+  m_GroupName: Cards
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 522e297bb43438646a8f388218608f81
+  m_SerializeEntries:
+  - m_GUID: 26eab41ff1f05d146b2f9fcc6c0aeaa9
+    m_Address: ciclano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 26eab41ff1f05d146b2f9fcc6c0aeaa9, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 26eab41ff1f05d146b2f9fcc6c0aeaa9, type: 3}
+  - m_GUID: 2b0427929ff36e94983bc17e2b68c28b
+    m_Address: apto1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 2b0427929ff36e94983bc17e2b68c28b, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 2b0427929ff36e94983bc17e2b68c28b, type: 3}
+  - m_GUID: 41e29ddc9e1f3b1489b00ae72426389c
+    m_Address: faca
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 41e29ddc9e1f3b1489b00ae72426389c, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 41e29ddc9e1f3b1489b00ae72426389c, type: 3}
+  - m_GUID: 4db18df6ea089dd4d936a23c19fc2a2a
+    m_Address: apto3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 4db18df6ea089dd4d936a23c19fc2a2a, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 4db18df6ea089dd4d936a23c19fc2a2a, type: 3}
+  - m_GUID: 53d8b042dc8203c40a78217bd78e6ced
+    m_Address: DeckLibrary
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 11400000, guid: 53d8b042dc8203c40a78217bd78e6ced, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 53d8b042dc8203c40a78217bd78e6ced, type: 2}
+  - m_GUID: 75ec8387eacef6e4184148189f411eea
+    m_Address: triclano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 75ec8387eacef6e4184148189f411eea, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 75ec8387eacef6e4184148189f411eea, type: 3}
+  - m_GUID: 816b089be6ed5624ab47f19de98feebb
+    m_Address: namao
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 816b089be6ed5624ab47f19de98feebb, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 816b089be6ed5624ab47f19de98feebb, type: 3}
+  - m_GUID: 9438402c94cfd294e8c821d40359c1bf
+    m_Address: apto2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: 9438402c94cfd294e8c821d40359c1bf, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: 9438402c94cfd294e8c821d40359c1bf, type: 3}
+  - m_GUID: cd3bbf49a5b7fb3479763652b0adef38
+    m_Address: fulano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: cd3bbf49a5b7fb3479763652b0adef38, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: cd3bbf49a5b7fb3479763652b0adef38, type: 3}
+  - m_GUID: e8b7ab57a3dc42443b3936198a8aed38
+    m_Address: trabuco
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 5151429085237753260, guid: e8b7ab57a3dc42443b3936198a8aed38, type: 3}
+    m_TargetAsset: {fileID: 5151429085237753260, guid: e8b7ab57a3dc42443b3936198a8aed38, type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2677ae4a3efd8244a81d3e4d4f24a809, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 70732f4924c0c7443abe4e4f4bd2407a, type: 2}
+    - {fileID: 11400000, guid: 21fb1b7edbb791141a7ea8b8f0c2fc40, type: 2}

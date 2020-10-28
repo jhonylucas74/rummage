@@ -2,25 +2,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Events {
-    public static GameStateEvent OnGameStart;
     public static SimpleEvent OnNextPlayerTurn;
     public static SimpleEvent OnCheckHand;
     public static SimpleEvent OnEmptyHand;
     public static SimpleEvent OnFindHand;
+    
+    public static IntEvent OnAvatarSelect;
+    public static StringEvent OnPlayerNameChange;
+    public static StringEvent OnSessionChange;
+    public static PlayersEvent OnPlayersUpdate;
+
+    #region Menu
     public static SimpleEvent OnInitialMenu;
     public static SimpleEvent OnCreateSession;
     public static SimpleEvent OnJoinSession;
     public static SimpleEvent OnAvatarsMenu;
     public static SimpleEvent OnWaitingMenu;
     public static SimpleEvent OnJoinMenu;
-    public static IntEvent OnAvatarSelect;
-    public static StringEvent OnPlayerNameChange;
-    public static StringEvent OnSessionChange;
-    public static PlayersEvent OnPlayersUpdate;
-
+    public static SimpleEvent OnPrepareGame;
+    #endregion
+    #region Game
+    public static SimpleEvent OnGameStart;
+    public static SimpleEvent OnGameEnd;
     public static SimpleEvent OnDeckReady;
-
     public static ListStringEvent OnGameCardsReceived;
+    #endregion
 }
 
 public delegate void ListStringEvent(List<string> list);

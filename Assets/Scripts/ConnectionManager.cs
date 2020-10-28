@@ -5,6 +5,11 @@ using UnityEngine;
 using SocketIO;
 
 public class ConnectionManager : Singleton<ConnectionManager> {
+
+    const string UPDATE_PLAYERS = "updatePlayers";
+    const string UPDATE_GAMEDATA = "updateGameData";
+    const string JOIN_SUCCESS = "onJoinSucess";
+
     private SocketIOComponent socket;
     string sessionId;
     int playerAvatar = 0;
@@ -18,10 +23,11 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On("newSession", NewSession);
         socket.On("error", OnError);
 		socket.On("close", OnClose);
-        socket.On("updatedPlayers", OnUpdatedPlayers);
-        socket.On("updateGameCards", OnUpdateGameCards);
-        socket.On("onJoinSucess", OnJoinSucess);
-        // socket.On("newGameState", NewGameState);
+
+        socket.On(UPDATE_PLAYERS, OnUpdatedPlayers);
+        socket.On(UPDATE_GAMEDATA, OnUpdateGameData);
+        socket.On(JOIN_SUCCESS, OnJoinSucess);
+        
         Events.OnCreateSession += OnCreateSession;
         Events.OnAvatarSelect += OnAvatarSelect;
         Events.OnPlayerNameChange += OnPlayerNameChange;
@@ -170,37 +176,33 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         DispatchPlayers();
     }
 
-    public void DispatchGameCards(List<Card> cards)
+    public void DispatchGameData(JSONObject data)
     {
-        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
         data.AddField("sessionId", sessionId);
-        JSONObject cardsArray = new JSONObject(JSONObject.Type.ARRAY);
-
-        for (int i = 0; i < cards.Count; i++)
-        {
-            JSONObject obj = new JSONObject(JSONObject.Type.OBJECT);
-            obj.AddField("card", cards[i].Data.Name);
-            cardsArray.Add(obj);
-        }
-
-        data.AddField("cards", cardsArray);
-        socket.Emit("updateGameCards", data);
+        
+        socket.Emit(UPDATE_GAMEDATA, data);
     }
 
-    void OnUpdateGameCards(SocketIOEvent e)
+    void OnUpdateGameData(SocketIOEvent e)
     {
-        if (_isHost) return;
+        //if (_isHost) return;
 
-        e.data.GetField("cards", delegate (JSONObject obj)
+        JSONObject cardContainer = e.data.GetField("cards");
+        string[] cards = new string[cardContainer.list.Count];
+        for (int i = 0; i < cardContainer.list.Count; i++)
         {
-            List<string> cards = new List<string>();
-            foreach (JSONObject j in obj.list)
-            {
-                cards.Add(j.GetField("card").str);
-            }
+            cards[i] = cardContainer.list[i].GetField("card").str;
+        }
 
-            Events.OnGameCardsReceived?.Invoke(cards);
-        });
+        JSONObject orderContainer = e.data.GetField("turnOrder");
+        string[] turnOrder = new string[orderContainer.list.Count];
+        for(int i = 0; i < orderContainer.list.Count; i++)
+        {
+            turnOrder[i] = orderContainer.list[i].GetField("playerId").str;
+        }
+
+        GameManager.Instance.SetGameData(turnOrder, cards);
+        //Events.OnGameCardsReceived?.Invoke(cards);
     }
 
     public void DispatchPlayers () {
@@ -213,7 +215,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         }
 
         data.AddField("players", playersArray);
-        socket.Emit("updatePlayers", data);
+        socket.Emit(UPDATE_PLAYERS, data);
     }
 
     public void OnUpdatedPlayers (SocketIOEvent e) {

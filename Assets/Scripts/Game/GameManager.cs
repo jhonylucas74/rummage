@@ -1,11 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] TurnsUI _turnUI;
+
+    Player _player;
     List<Player> _players;
     public List<Player> Players { get => _players; }
+
+    string[] _turnOrder;
 
     Deck _deck;
     List<Card> _gameCards;
@@ -17,11 +23,19 @@ public class GameManager : Singleton<GameManager>
         _players = new List<Player>();
         _gameCards = new List<Card>();
 
+        Events.OnPlayersUpdate += OnPlayersUpdate;
+
+        Events.OnPrepareGame += OnPrepareGame;
+
         Events.OnDeckReady += OnDeckReady;
-        Events.OnGameCardsReceived += OnGameCardsReceived;
     }
 
-    public void StartMatch()
+    void OnPlayersUpdate(List<Player> list)
+    {
+        _player = list.Find(x => x.isMe);
+    }
+
+    void OnPrepareGame()
     {
         _deck = new Deck();
     }
@@ -30,11 +44,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (ConnectionManager.Instance.IsHost)
         {
-            _gameCards = new List<Card>();
-            _gameCards.Add(_deck.GetCard(CardType.Location));
-            _gameCards.Add(_deck.GetCard(CardType.Weapon));
-            _gameCards.Add(_deck.GetCard(CardType.Culprit));
-
             foreach (Player player in Players)
             {
                 player.Cards.Add(_deck.GetCard(CardType.Location).Data);
@@ -42,26 +51,67 @@ public class GameManager : Singleton<GameManager>
                 player.Cards.Add(_deck.GetCard(CardType.Culprit).Data);
             }
 
+            JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+            data.AddField("turnOrder", SetTurnOrder());
+            data.AddField("cards", SetGameCards());
+
+            ConnectionManager.Instance.DispatchGameData(data);
             ConnectionManager.Instance.DispatchPlayers();
-            ConnectionManager.Instance.DispatchGameCards(_gameCards);
         }
     }
 
-    void OnGameCardsReceived(List<string> cards)
+    JSONObject SetGameCards()
     {
-        foreach (var c in cards)
+        _gameCards = new List<Card>();
+        _gameCards.Add(_deck.GetCard(CardType.Location));
+        _gameCards.Add(_deck.GetCard(CardType.Weapon));
+        _gameCards.Add(_deck.GetCard(CardType.Culprit));
+
+        JSONObject obj;
+        JSONObject cardsArray = new JSONObject(JSONObject.Type.ARRAY);
+        for (int i = 0; i < _gameCards.Count; i++)
         {
-            Debug.Log(c);
+            obj = new JSONObject(JSONObject.Type.OBJECT);
+            obj.AddField("card", _gameCards[i].Data.Name);
+            cardsArray.Add(obj);
         }
 
+        return cardsArray;
+    }
+
+    JSONObject SetTurnOrder()
+    {
+        _players.Shuffle();
+        _turnOrder = new string[_players.Count];
+
+        JSONObject obj;
+        JSONObject turnOrderArray = new JSONObject(JSONObject.Type.ARRAY);
+        for (int i = 0; i < _players.Count; i++)
+        {
+            _turnOrder[i] = _players[i].id;
+            obj = new JSONObject(JSONObject.Type.OBJECT);
+            obj.AddField("playerId", _players[i].id);
+            turnOrderArray.Add(obj);
+        }
+
+        return turnOrderArray;
+    }
+
+    public async void SetGameData(string[] turnOrder, string[] cards)
+    {
         if (!ConnectionManager.Instance.IsHost)
         {
+            AsyncOperationHandle<Card> handler;
+
             foreach (string name in cards)
             {
-                Addressables.LoadAssetAsync<Card>(name).Completed += handler => _gameCards.Add(handler.Result);
+                handler = Addressables.LoadAssetAsync<Card>(name);
+                await handler.Task;
+                    
+                _gameCards.Add(handler.Result);
             }
         }
 
-        //TODO: Game Start
+        _turnUI.Fill(turnOrder, () => Events.OnGameStart?.Invoke());
     }
 }

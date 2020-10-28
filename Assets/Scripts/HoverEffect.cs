@@ -13,7 +13,8 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         OnWaitingMenu,
         OnJoinMenu,
         OnCreateSession,
-        OnJoinSession
+        OnJoinSession,
+        OnPrepareGame
     }
 
     public ClickEventType clickEvent;
@@ -46,6 +47,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 break;
             case ClickEventType.OnJoinSession:
                 Events.OnJoinSession?.Invoke();
+                break;
+            case ClickEventType.OnPrepareGame:
+                Events.OnPrepareGame?.Invoke();
                 break;
         }
     }

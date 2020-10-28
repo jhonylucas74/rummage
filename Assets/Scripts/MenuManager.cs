@@ -36,7 +36,7 @@ public class MenuManager : MonoBehaviour
         JoinMenu.SetActive(false);
     }
 
-    void OnGameStart (GameState state) {
+    void OnGameStart () {
         gameObject.SetActive(false);
     }
 
