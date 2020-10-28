@@ -6,6 +6,7 @@ public class Player {
     public string name;
     public string id;
     public int avatar;
+    public bool isMe = false;
 
     List<CardData> _cards;
     public List<CardData> Cards { get => _cards; }

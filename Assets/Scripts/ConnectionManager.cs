@@ -223,7 +223,9 @@ public class ConnectionManager : Singleton<ConnectionManager> {
             GameManager.Instance.Players.Clear();
 
             foreach(JSONObject j in obj.list){
-                GameManager.Instance.Players.Add(new Player(j));
+                Player p = new Player(j);
+                p.isMe = _userId == p.id;
+                GameManager.Instance.Players.Add(p);
             }
 
             Events.OnPlayersUpdate?.Invoke(GameManager.Instance.Players);
