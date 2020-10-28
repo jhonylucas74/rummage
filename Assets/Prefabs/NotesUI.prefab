@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229737676790176}
   - component: {fileID: 5176229737676790178}
+  - component: {fileID: 5556469464021572705}
   - component: {fileID: 5176229737676790177}
   m_Layer: 5
   m_Name: Apart. 4
@@ -45,6 +46,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229737676790183}
   m_CullTransparentMesh: 1
+--- !u!114 &5556469464021572705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229737676790183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229737676790177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +113,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 65
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -278,6 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229737905445069}
   - component: {fileID: 5176229737905445071}
+  - component: {fileID: 528322700164390611}
   - component: {fileID: 5176229737905445070}
   m_Layer: 5
   m_Name: Aldemir
@@ -313,6 +329,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229737905445068}
   m_CullTransparentMesh: 1
+--- !u!114 &528322700164390611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229737905445068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 6
 --- !u!114 &5176229737905445070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229737910337041}
   - component: {fileID: 5176229737910337043}
+  - component: {fileID: 6145835772377494382}
   - component: {fileID: 5176229737910337042}
   m_Layer: 5
   m_Name: Diego
@@ -447,6 +478,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229737910337040}
   m_CullTransparentMesh: 1
+--- !u!114 &6145835772377494382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229737910337040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 5
 --- !u!114 &5176229737910337042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229737910479540}
   - component: {fileID: 5176229737910479542}
+  - component: {fileID: 375696225508817728}
   - component: {fileID: 5176229737910479541}
   m_Layer: 5
   m_Name: Scissor
@@ -581,6 +627,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229737910479531}
   m_CullTransparentMesh: 1
+--- !u!114 &375696225508817728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229737910479531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 4
 --- !u!114 &5176229737910479541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738015415910}
   - component: {fileID: 5176229738015415904}
+  - component: {fileID: 3562529869508579222}
   - component: {fileID: 5176229738015415911}
   m_Layer: 5
   m_Name: Ice Pick
@@ -715,6 +776,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738015415909}
   m_CullTransparentMesh: 1
+--- !u!114 &3562529869508579222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738015415909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 5
 --- !u!114 &5176229738015415911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,6 +979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738233200404}
   - component: {fileID: 5176229738233200406}
+  - component: {fileID: 2014370213247776068}
   - component: {fileID: 5176229738233200405}
   m_Layer: 5
   m_Name: Jhony
@@ -939,6 +1015,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738233200395}
   m_CullTransparentMesh: 1
+--- !u!114 &2014370213247776068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738233200395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 0
 --- !u!114 &5176229738233200405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,7 +1082,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 65
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1038,6 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738256937235}
   - component: {fileID: 5176229738256937245}
+  - component: {fileID: 1116181593564069928}
   - component: {fileID: 5176229738256937244}
   m_Layer: 5
   m_Name: Iago
@@ -1073,6 +1164,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738256937234}
   m_CullTransparentMesh: 1
+--- !u!114 &1116181593564069928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738256937234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 3
 --- !u!114 &5176229738256937244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,6 +1277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738373929723}
   - component: {fileID: 5176229738373929669}
+  - component: {fileID: 8247435580233887450}
   - component: {fileID: 5176229738373929668}
   m_Layer: 5
   m_Name: Olive Oil
@@ -1207,6 +1313,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738373929722}
   m_CullTransparentMesh: 1
+--- !u!114 &8247435580233887450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738373929722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 6
 --- !u!114 &5176229738373929668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1306,6 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738394261582}
   - component: {fileID: 5176229738394261576}
+  - component: {fileID: 1722944208633282691}
   - component: {fileID: 5176229738394261583}
   m_Layer: 5
   m_Name: Apart. 2
@@ -1341,6 +1462,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738394261581}
   m_CullTransparentMesh: 1
+--- !u!114 &1722944208633282691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738394261581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229738394261583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,6 +1575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738429009357}
   - component: {fileID: 5176229738429009359}
+  - component: {fileID: 21668161454424029}
   - component: {fileID: 5176229738429009358}
   m_Layer: 5
   m_Name: Apart. 3
@@ -1475,6 +1611,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738429009356}
   m_CullTransparentMesh: 1
+--- !u!114 &21668161454424029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738429009356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229738429009358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,7 +1678,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 65
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1574,6 +1724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738501342580}
   - component: {fileID: 5176229738501342582}
+  - component: {fileID: 1286411430764705483}
   - component: {fileID: 5176229738501342581}
   m_Layer: 5
   m_Name: Frying Pan
@@ -1609,6 +1760,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738501342571}
   m_CullTransparentMesh: 1
+--- !u!114 &1286411430764705483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738501342571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 1
 --- !u!114 &5176229738501342581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,6 +1999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738599131656}
   - component: {fileID: 5176229738599131658}
+  - component: {fileID: 3697387471627889107}
   - component: {fileID: 5176229738599131657}
   m_Layer: 5
   m_Name: Kitchen Board
@@ -1869,6 +2035,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738599131663}
   m_CullTransparentMesh: 1
+--- !u!114 &3697387471627889107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738599131663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 7
 --- !u!114 &5176229738599131657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,6 +2223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738700135118}
   - component: {fileID: 5176229738700135112}
+  - component: {fileID: 3107490157710734022}
   - component: {fileID: 5176229738700135119}
   m_Layer: 5
   m_Name: Apart. 1
@@ -2078,6 +2259,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738700135117}
   m_CullTransparentMesh: 1
+--- !u!114 &3107490157710734022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738700135117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229738700135119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2213,6 +2408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738750921572}
   - component: {fileID: 5176229738750921574}
+  - component: {fileID: 8917234446072069138}
   - component: {fileID: 5176229738750921573}
   m_Layer: 5
   m_Name: Anne
@@ -2248,6 +2444,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738750920859}
   m_CullTransparentMesh: 1
+--- !u!114 &8917234446072069138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738750920859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 1
 --- !u!114 &5176229738750921573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2556,6 +2766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738919661783}
   - component: {fileID: 5176229738919661777}
+  - component: {fileID: 6143314148187770595}
   - component: {fileID: 5176229738919661776}
   m_Layer: 5
   m_Name: Pierre
@@ -2591,6 +2802,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738919661782}
   m_CullTransparentMesh: 1
+--- !u!114 &6143314148187770595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738919661782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 2
 --- !u!114 &5176229738919661776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2690,6 +2915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229738987016914}
   - component: {fileID: 5176229738987016924}
+  - component: {fileID: 5914824998940104000}
   - component: {fileID: 5176229738987016915}
   m_Layer: 5
   m_Name: Apart. 8
@@ -2725,6 +2951,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229738987016913}
   m_CullTransparentMesh: 1
+--- !u!114 &5914824998940104000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229738987016913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229738987016915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2824,6 +3064,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739014592636}
   - component: {fileID: 5176229739014592638}
+  - component: {fileID: 1212720687195863775}
   - component: {fileID: 5176229739014592637}
   m_Layer: 5
   m_Name: Apart. 6
@@ -2859,6 +3100,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739014592627}
   m_CullTransparentMesh: 1
+--- !u!114 &1212720687195863775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739014592627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229739014592637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,6 +3213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739080400697}
   - component: {fileID: 5176229739080400699}
+  - component: {fileID: 5756180878474613632}
   - component: {fileID: 5176229739080400698}
   m_Layer: 5
   m_Name: Alberto
@@ -2993,6 +3249,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739080400696}
   m_CullTransparentMesh: 1
+--- !u!114 &5756180878474613632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739080400696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 4
 --- !u!114 &5176229739080400698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3226,6 +3496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739171540788}
   - component: {fileID: 5176229739171540790}
+  - component: {fileID: 5465295933686175659}
   - component: {fileID: 5176229739171540789}
   m_Layer: 5
   m_Name: Hammer
@@ -3261,6 +3532,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739171540779}
   m_CullTransparentMesh: 1
+--- !u!114 &5465295933686175659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739171540779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 3
 --- !u!114 &5176229739171540789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,6 +3681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739307360917}
   - component: {fileID: 5176229739307360919}
+  - component: {fileID: 3353836119415412991}
   - component: {fileID: 5176229739307360918}
   m_Layer: 5
   m_Name: Knife
@@ -3431,6 +3717,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739307360916}
   m_CullTransparentMesh: 1
+--- !u!114 &3353836119415412991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739307360916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 0
 --- !u!114 &5176229739307360918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3530,6 +3830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739350893104}
   - component: {fileID: 5176229739350893106}
+  - component: {fileID: 1575001646796652637}
   - component: {fileID: 5176229739350893105}
   m_Layer: 5
   m_Name: Rolling Pin
@@ -3565,6 +3866,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739350893111}
   m_CullTransparentMesh: 1
+--- !u!114 &1575001646796652637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739350893111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  playerIndex: 2
 --- !u!114 &5176229739350893105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3664,6 +3979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739354840892}
   - component: {fileID: 5176229739354840894}
+  - component: {fileID: 3485574079193998349}
   - component: {fileID: 5176229739354840893}
   m_Layer: 5
   m_Name: Apart. 7
@@ -3699,6 +4015,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739354840883}
   m_CullTransparentMesh: 1
+--- !u!114 &3485574079193998349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739354840883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229739354840893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,6 +4325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739597202226}
   - component: {fileID: 5176229739597202236}
+  - component: {fileID: 4116108170797301920}
   - component: {fileID: 5176229739597202227}
   m_Layer: 5
   m_Name: Rennes
@@ -4030,6 +4361,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739597202225}
   m_CullTransparentMesh: 1
+--- !u!114 &4116108170797301920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739597202225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  playerIndex: 7
 --- !u!114 &5176229739597202227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4133,7 +4478,7 @@ GameObject:
   - component: {fileID: 5176229739649433867}
   - component: {fileID: 2881096763814864083}
   m_Layer: 5
-  m_Name: Notes
+  m_Name: NotesUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4251,6 +4596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5176229739681777278}
   - component: {fileID: 5176229739681777272}
+  - component: {fileID: 3191469958063634453}
   - component: {fileID: 5176229739681777279}
   m_Layer: 5
   m_Name: Apart. 5
@@ -4286,6 +4632,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5176229739681777277}
   m_CullTransparentMesh: 1
+--- !u!114 &3191469958063634453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176229739681777277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97b48cfa3aa421847b3c89a54873404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  playerIndex: 0
 --- !u!114 &5176229739681777279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4699,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 65
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
