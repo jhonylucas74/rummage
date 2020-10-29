@@ -150,7 +150,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         e.data.GetField("sessionId", delegate(JSONObject data) {
             sessionId = data.str;
             Events.OnSessionChange?.Invoke(data.str);
-            GameManager.Instance.Players.Add(new Player("host"));
+            _userId = "host";
+            GameManager.Instance.Players.Add(new Player(_userId));
             Debug.Log(sessionId);
         }, delegate(string name) {
             Debug.LogWarning("no game sessions");
@@ -219,14 +220,15 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     }
 
     public void OnUpdatedPlayers (SocketIOEvent e) {
-        if (_isHost) return;
 
         e.data.GetField("players", delegate(JSONObject obj) {
+
             GameManager.Instance.Players.Clear();
 
             foreach(JSONObject j in obj.list){
                 Player p = new Player(j);
                 p.isMe = _userId == p.id;
+
                 GameManager.Instance.Players.Add(p);
             }
 

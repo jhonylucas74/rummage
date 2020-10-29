@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -6,6 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TurnsUI _turnUI;
+    [SerializeField] Transform _cardsContainer;
 
     Player _player;
     List<Player> _players;
@@ -26,13 +28,7 @@ public class GameManager : Singleton<GameManager>
         Events.OnPlayersUpdate += OnPlayersUpdate;
 
         Events.OnPrepareGame += OnPrepareGame;
-
         Events.OnDeckReady += OnDeckReady;
-    }
-
-    void OnPlayersUpdate(List<Player> list)
-    {
-        _player = list.Find(x => x.isMe);
     }
 
     void OnPrepareGame()
@@ -97,6 +93,11 @@ public class GameManager : Singleton<GameManager>
         return turnOrderArray;
     }
 
+    void OnPlayersUpdate(List<Player> list)
+    {
+        _player = _players.Find(x => x.isMe);
+    }
+
     public async void SetGameData(string[] turnOrder, string[] cards)
     {
         if (!ConnectionManager.Instance.IsHost)
@@ -110,6 +111,27 @@ public class GameManager : Singleton<GameManager>
                     
                 _gameCards.Add(handler.Result);
             }
+        }
+
+        await Task.Run(() => { while (_player == null) { } });
+        await Task.Run(() => { while (_player.Cards.Count <= 0) { } });
+
+        Transform trans;
+        Vector3 pos = Vector3.zero;
+        AsyncOperationHandle<GameObject> objHandler;
+        for (int i = 0; i < _player.Cards.Count; i++)
+        {
+            objHandler = Addressables.InstantiateAsync(_player.Cards[i].Name, _cardsContainer);
+            await objHandler.Task;
+
+            trans = objHandler.Result.GetComponent<Transform>();
+            pos.x = -0.5f + (0.5f * i);
+            pos.y = -1.25f + (0.1f * (i % 2));
+            pos.z = 3.15f;
+
+            trans.localPosition = pos;
+            trans.localScale = Vector3.one;
+            trans.localEulerAngles = Vector3.forward * (12.5f - 12.5f * i);
         }
 
         _turnUI.Fill(turnOrder, () => Events.OnGameStart?.Invoke());

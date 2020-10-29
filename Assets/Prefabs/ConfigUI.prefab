@@ -442,7 +442,6 @@ GameObject:
   - component: {fileID: 2589144169834593789}
   - component: {fileID: 5735996078720913671}
   - component: {fileID: 5866180969300111111}
-  - component: {fileID: 7680363520447098514}
   m_Layer: 0
   m_Name: '> Start match'
   m_TagString: Untagged
@@ -578,19 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306d42a9e23d5f44ea7747af5259662d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickEvent: 0
---- !u!114 &7680363520447098514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610059673472082111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7943dd8c6c3191241b3864489663e127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  clickEvent: 6
 --- !u!1 &906024527076770854
 GameObject:
   m_ObjectHideFlags: 0
