@@ -36,8 +36,8 @@ public class CardsHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 _originalRotations[i] = cTrans.localEulerAngles;
             }
 
-            position.x = -0.75f + (0.75f * i);
-            position.y = -0.15f;
+            position.x = -0.6f + (0.6f * i);
+            position.y = -0.3f;
             position.z = cTrans.localPosition.z;
 
             cTrans.DOLocalMove(position, 1f).SetEase(Ease.OutSine).Play();

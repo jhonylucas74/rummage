@@ -53,6 +53,8 @@ public class TurnsUI : MonoBehaviour
         for (int i = 0; i < playersImages.Count; i++) {
             playAppearTween(playersTransforms[i], i * 0.05f);
         }
+
+        OnNextPlayerTurn();
     }
 
     void playAppearTween (RectTransform playerTransform, float delay) {
