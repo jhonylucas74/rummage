@@ -7,9 +7,10 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TurnsUI _turnUI;
-    [SerializeField] Transform _cardsContainer;
 
     Player _player;
+    public Player Player { get => _player; }
+
     List<Player> _players;
     public List<Player> Players { get => _players; }
 
@@ -26,9 +27,15 @@ public class GameManager : Singleton<GameManager>
         _gameCards = new List<Card>();
 
         Events.OnPlayersUpdate += OnPlayersUpdate;
-
         Events.OnPrepareGame += OnPrepareGame;
         Events.OnDeckReady += OnDeckReady;
+    }
+
+    private void OnDestroy()
+    {
+        Events.OnPlayersUpdate -= OnPlayersUpdate;
+        Events.OnPrepareGame -= OnPrepareGame;
+        Events.OnDeckReady -= OnDeckReady;
     }
 
     void OnPrepareGame()
@@ -116,24 +123,7 @@ public class GameManager : Singleton<GameManager>
         await Task.Run(() => { while (_player == null) { } });
         await Task.Run(() => { while (_player.Cards.Count <= 0) { } });
 
-        Transform trans;
-        Vector3 pos = Vector3.zero;
-        AsyncOperationHandle<GameObject> objHandler;
-        for (int i = 0; i < _player.Cards.Count; i++)
-        {
-            objHandler = Addressables.InstantiateAsync(_player.Cards[i].Name, _cardsContainer);
-            await objHandler.Task;
-
-            trans = objHandler.Result.GetComponent<Transform>();
-            pos.x = -0.5f + (0.5f * i);
-            pos.y = -1.25f + (0.1f * (i % 2));
-            pos.z = 3.15f;
-
-            trans.localPosition = pos;
-            trans.localScale = Vector3.one;
-            trans.localEulerAngles = Vector3.forward * (12.5f - 12.5f * i);
-        }
-
+        Events.OnPlayerCardsReady?.Invoke();
         _turnUI.Fill(turnOrder, () => Events.OnGameStart?.Invoke());
     }
 }
