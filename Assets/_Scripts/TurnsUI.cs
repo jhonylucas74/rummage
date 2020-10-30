@@ -82,6 +82,8 @@ public class TurnsUI : MonoBehaviour
         }
 
         turn = (turn + 1) % maxPlayers;
+
+        Events.OnPlayerTurn?.Invoke(GameManager.Instance.Player.id);
     }
 
     void OnCheckHand () {

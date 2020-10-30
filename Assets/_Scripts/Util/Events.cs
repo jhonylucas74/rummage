@@ -27,6 +27,13 @@ public static class Events {
     public static SimpleEvent OnDeckReady;
     public static ListStringEvent OnGameCardsReceived;
     public static SimpleEvent OnPlayerCardsReady;
+
+    public static StringEvent OnPlayerTurn;
+
+    public static SimpleEvent OnMenuMove;
+    public static SimpleEvent OnMenuDenounce;
+    public static SimpleEvent OnMenuPass;
+    public static SimpleEvent OnMenuBack;
     #endregion
 }
 
