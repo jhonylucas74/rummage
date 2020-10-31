@@ -10,6 +10,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     const string UPDATE_GAMEDATA = "updateGameData";
     const string JOIN_SUCCESS = "onJoinSucess";
 
+    AudioSource _PlayerJoinAudio;
+
     private SocketIOComponent socket;
     string sessionId;
     int playerAvatar = 0;
@@ -27,6 +29,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On(UPDATE_PLAYERS, OnUpdatedPlayers);
         socket.On(UPDATE_GAMEDATA, OnUpdateGameData);
         socket.On(JOIN_SUCCESS, OnJoinSucess);
+
+        _PlayerJoinAudio = GetComponent<AudioSource>();
         
         Events.OnCreateSession += OnCreateSession;
         Events.OnAvatarSelect += OnAvatarSelect;
@@ -220,6 +224,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     }
 
     public void OnUpdatedPlayers (SocketIOEvent e) {
+        _PlayerJoinAudio.Play();
 
         e.data.GetField("players", delegate(JSONObject obj) {
 

@@ -8,11 +8,14 @@ public class MenuManager : MonoBehaviour
     public GameObject AvatarSelect;
     public GameObject WaitingRoom;
     public GameObject JoinMenu;
+    AudioSource _clickSound; 
 
     void Start() {
         AvatarSelect.SetActive(false);
         WaitingRoom.SetActive(false);
         JoinMenu.SetActive(false);
+
+        _clickSound = GetComponent<AudioSource>();
 
         Events.OnInitialMenu += OnInitialMenu;
         Events.OnAvatarsMenu += OnAvatarsMenu;
@@ -34,10 +37,12 @@ public class MenuManager : MonoBehaviour
         AvatarSelect.SetActive(false);
         WaitingRoom.SetActive(false);
         JoinMenu.SetActive(false);
+        _clickSound.Play();
     }
 
     void OnGameStart () {
         gameObject.SetActive(false);
+        _clickSound.Play();
     }
 
     void OnAvatarsMenu () {
@@ -45,6 +50,7 @@ public class MenuManager : MonoBehaviour
         AvatarSelect.SetActive(true);
         WaitingRoom.SetActive(false);
         JoinMenu.SetActive(false);
+        _clickSound.Play();
     }
 
     void OnWaitingMenu () {
@@ -52,6 +58,7 @@ public class MenuManager : MonoBehaviour
         AvatarSelect.SetActive(false);
         WaitingRoom.SetActive(true);
         JoinMenu.SetActive(false);
+        _clickSound.Play();
     }
 
     void OnJoinMenu () {
@@ -59,5 +66,6 @@ public class MenuManager : MonoBehaviour
         AvatarSelect.SetActive(false);
         WaitingRoom.SetActive(false);
         JoinMenu.SetActive(true);
+        _clickSound.Play();
     }
 }
