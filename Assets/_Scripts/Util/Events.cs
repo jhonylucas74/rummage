@@ -35,6 +35,9 @@ public static class Events {
     public static SimpleEvent OnMenuPass;
     public static SimpleEvent OnMenuBack;
     #endregion
+
+    public static SimpleEvent OnPlayerMoveStart;
+    public static IntEvent OnPlayerMoveSelect;
 }
 
 

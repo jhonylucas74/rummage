@@ -71,7 +71,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &1158249847260708415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,11 +80,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1055851192072048587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5359fe05458924ba46b02ef1a089d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9680d4f0d2b81a8428ebc7e8732a6ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   disabledColor: {r: 0.69, g: 0.69, b: 0.69, a: 1}
   activeColor: {r: 1, g: 1, b: 1, a: 1}
-  noneCardColor: {r: 0.9811321, g: 0.60437274, b: 0.20733352, a: 1}
-  checkCardColor: {r: 0.2998932, g: 0.8372585, b: 0.9811321, a: 1}
-  sucessCardColor: {r: 0.3253854, g: 1, b: 0.29622638, a: 1}
+  noneCardColor: {r: 0.9811321, g: 0.36561054, b: 0.36561054, a: 0}
+  checkCardColor: {r: 0.23113209, g: 0.89409477, b: 1, a: 0}
+  sucessCardColor: {r: 0.34191194, g: 1, b: 0.25943398, a: 0}

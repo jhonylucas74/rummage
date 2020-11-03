@@ -43,6 +43,7 @@ public class PlayerActionsUI : MonoBehaviour
     {
         ToggleActions(false);
         ToggleBack(true);
+        Events.OnPlayerMoveStart?.Invoke();
     }
 
     void OnMenuPass()
