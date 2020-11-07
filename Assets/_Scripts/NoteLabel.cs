@@ -15,10 +15,16 @@ public class NoteLabel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     TMP_Text mtext;
     float originalX;
     bool isChecked = false;
+
     void Start() {
         textTransform = GetComponent<RectTransform>();
         originalX = textTransform.anchoredPosition.x;
         mtext = GetComponent<TMP_Text>();
+        Events.OnPlayersUpdate += OnPlayersUpdate;
+    }
+
+    void OnDestroy () {
+        Events.OnPlayersUpdate -= OnPlayersUpdate;
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -41,5 +47,15 @@ public class NoteLabel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Vector2 final = new Vector2(originalX, textTransform.anchoredPosition.y);
         DOTween.To(() => textTransform.anchoredPosition, xy => textTransform.anchoredPosition = xy, final, 0.5f)
             .SetEase(Ease.OutBack);
+    }
+
+    void OnPlayersUpdate (List<Player> players) {
+        if (type == LabelType.Culprit) {
+            for (int i = 0 ; i < players.Count; i ++) {
+                if (players[i].avatar == playerIndex) {
+                    mtext.text = players[i].name;
+                }
+            }
+        }
     }
 }

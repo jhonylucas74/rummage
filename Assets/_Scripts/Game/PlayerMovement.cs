@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour {
     bool _running = false;
 
     public int from = 0;
-    public int to = 5;
 
     void Start() {
         transform.DOLocalRotate(new Vector3 (0, 0, 16f), 0.3f, RotateMode.Fast)
@@ -34,6 +33,9 @@ public class PlayerMovement : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[0].transform.position, step);
 
             if (Vector3.Distance(transform.position, waypoints[0].transform.position) < 0.001f) {
+                if (waypoints.Count == 1) {
+                    from = WaypointFinder.Instance.getWaypointIndex(waypoints[0]);
+                }
                 waypoints.RemoveAt(0);
             }
         }
@@ -51,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void OnPlayerMoveSelect () {
+    void OnPlayerMoveSelect (int to) {
         waypoints = WaypointFinder.Instance.FindPath(from, to);
     }
 }

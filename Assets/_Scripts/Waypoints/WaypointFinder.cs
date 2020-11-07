@@ -18,6 +18,10 @@ public class WaypointFinder : Singleton<WaypointFinder>
         return path;
     }
 
+    public int getWaypointIndex (Waypoint point) {
+        return System.Array.IndexOf(waypoints, point);
+    }
+
     private int EvaluateWaypoint (int from, int to, int parent,ref List<Waypoint> path) {
         if (from == to) {
             path.Add(waypoints[from]);

@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 528322700164390611}
   - component: {fileID: 5176229737905445070}
   m_Layer: 5
-  m_Name: Aldemir
+  m_Name: Bearded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Aldemir
+  m_text: Bearded
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 6145835772377494382}
   - component: {fileID: 5176229737910337042}
   m_Layer: 5
-  m_Name: Diego
+  m_Name: Emo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Diego
+  m_text: Emo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 2014370213247776068}
   - component: {fileID: 5176229738233200405}
   m_Layer: 5
-  m_Name: Jhony
+  m_Name: Comunist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jhony
+  m_text: Comunist
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 1116181593564069928}
   - component: {fileID: 5176229738256937244}
   m_Layer: 5
-  m_Name: Iago
+  m_Name: PetDad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Iago
+  m_text: Pet Dad
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -2407,7 +2407,7 @@ GameObject:
   - component: {fileID: 8917234446072069138}
   - component: {fileID: 5176229738750921573}
   m_Layer: 5
-  m_Name: Anne
+  m_Name: Egirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2473,7 +2473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Anne
+  m_text: E-girl
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -2764,7 +2764,7 @@ GameObject:
   - component: {fileID: 6143314148187770595}
   - component: {fileID: 5176229738919661776}
   m_Layer: 5
-  m_Name: Pierre
+  m_Name: Raged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pierre
+  m_text: Raged
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 5756180878474613632}
   - component: {fileID: 5176229739080400698}
   m_Layer: 5
-  m_Name: Alberto
+  m_Name: Homeless
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3277,7 +3277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Alberto
+  m_text: Homeless
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
@@ -4323,7 +4323,7 @@ GameObject:
   - component: {fileID: 4116108170797301920}
   - component: {fileID: 5176229739597202227}
   m_Layer: 5
-  m_Name: Rennes
+  m_Name: Competitive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4389,7 +4389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rennes
+  m_text: Competitive
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17afd6b1d55b9c741ac889dc30e83cc5, type: 2}
   m_sharedMaterial: {fileID: 4626729321137166711, guid: 17afd6b1d55b9c741ac889dc30e83cc5,
