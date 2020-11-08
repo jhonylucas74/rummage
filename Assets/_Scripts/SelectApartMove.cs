@@ -8,7 +8,7 @@ public class SelectApartMove : MonoBehaviour, IPointerClickHandler
     public int apart = 0;
 
     public void OnPointerClick(PointerEventData eventData) {
-        Events.OnPlayerMoveSelect?.Invoke(apart);
-        Debug.Log("entrei");
+        //Events.OnPlayerMoveSelect?.Invoke(apart);
+        ConnectionManager.Instance.SendPlayerMovement(GameManager.Instance.Player.id, apart);
     }
 }

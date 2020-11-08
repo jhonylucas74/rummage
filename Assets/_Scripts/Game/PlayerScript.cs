@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class PlayerMovement : MonoBehaviour {
+public class PlayerScript : MonoBehaviour {
+
+    public string Id;
+
     List<Waypoint> waypoints;
     public float speed = 1.0f;
     bool _running = false;
 
-    public int from = 0;
+    public int moveFrom = 0;
 
     void Start() {
         transform.DOLocalRotate(new Vector3 (0, 0, 16f), 0.3f, RotateMode.Fast)
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
 
             if (Vector3.Distance(transform.position, waypoints[0].transform.position) < 0.001f) {
                 if (waypoints.Count == 1) {
-                    from = WaypointFinder.Instance.getWaypointIndex(waypoints[0]);
+                    moveFrom = WaypointFinder.Instance.getWaypointIndex(waypoints[0]);
                 }
                 waypoints.RemoveAt(0);
             }
@@ -53,7 +55,11 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void OnPlayerMoveSelect (int to) {
-        waypoints = WaypointFinder.Instance.FindPath(from, to);
+    void OnPlayerMoveSelect (string id, int to) 
+    {
+        if (Id != id)
+            return;
+
+        waypoints = WaypointFinder.Instance.FindPath(moveFrom, to);
     }
 }

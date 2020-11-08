@@ -30,14 +30,14 @@ public static class Events {
 
     public static StringEvent OnPlayerTurn;
 
+    public static SimpleEvent OnPlayerMoveStart;
+    public static StringIntEvent OnPlayerMoveSelect;
+
     public static SimpleEvent OnMenuMove;
     public static SimpleEvent OnMenuDenounce;
     public static SimpleEvent OnMenuPass;
     public static SimpleEvent OnMenuBack;
     #endregion
-
-    public static SimpleEvent OnPlayerMoveStart;
-    public static IntEvent OnPlayerMoveSelect;
 }
 
 
@@ -52,3 +52,4 @@ public delegate void Vector3Event(Vector3 v3);
 public delegate void ListStringEvent(List<string> list);
 public delegate void ListCardEvent(List<Card> list);
 public delegate void PlayersEvent(List<Player> players);
+public delegate void StringIntEvent(string s, int i);
