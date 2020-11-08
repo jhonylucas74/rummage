@@ -19,17 +19,47 @@ MonoBehaviour:
     m_SubObjectName: 
   - m_AssetGUID: 4db18df6ea089dd4d936a23c19fc2a2a
     m_SubObjectName: 
-  Weapons:
-  - m_AssetGUID: e8b7ab57a3dc42443b3936198a8aed38
+  - m_AssetGUID: 41c3fda4bd25ca14f847927e532c3ac3
     m_SubObjectName: 
+  - m_AssetGUID: 173c313f484a06a4398ccedacb92c20e
+    m_SubObjectName: 
+  - m_AssetGUID: b4900df18514a0442b71efdba5c13463
+    m_SubObjectName: 
+  - m_AssetGUID: 952b5883c91b071478a396a5b292e3ba
+    m_SubObjectName: 
+  - m_AssetGUID: 21bccce027dd53b408fdf0d7d238226d
+    m_SubObjectName: 
+  Weapons:
   - m_AssetGUID: 816b089be6ed5624ab47f19de98feebb
+    m_SubObjectName: 
+  - m_AssetGUID: 1dbcab2995153b54d85b1b18b2bc65ce
+    m_SubObjectName: 
+  - m_AssetGUID: ed6ab422e804d3943ae8c7fff3fb508f
+    m_SubObjectName: 
+  - m_AssetGUID: 1c1714daf9caf00418cc302f59b2fbdb
     m_SubObjectName: 
   - m_AssetGUID: 41e29ddc9e1f3b1489b00ae72426389c
     m_SubObjectName: 
-  Culprits:
-  - m_AssetGUID: cd3bbf49a5b7fb3479763652b0adef38
+  - m_AssetGUID: bcffad5585f4caa4e9db8d4961c3e406
     m_SubObjectName: 
+  - m_AssetGUID: e8b7ab57a3dc42443b3936198a8aed38
+    m_SubObjectName: 
+  - m_AssetGUID: 43e1ec460b47628448fccd59acecbca4
+    m_SubObjectName: 
+  Culprits:
   - m_AssetGUID: 26eab41ff1f05d146b2f9fcc6c0aeaa9
     m_SubObjectName: 
+  - m_AssetGUID: cd3bbf49a5b7fb3479763652b0adef38
+    m_SubObjectName: 
   - m_AssetGUID: 75ec8387eacef6e4184148189f411eea
+    m_SubObjectName: 
+  - m_AssetGUID: 9854eae57fcbcbd4e93c4966fc0402b2
+    m_SubObjectName: 
+  - m_AssetGUID: a9b0f54d20ced08408943eb543887a32
+    m_SubObjectName: 
+  - m_AssetGUID: b0f6634cd79253748bb2e8257c2d1361
+    m_SubObjectName: 
+  - m_AssetGUID: 036a45962683b8c4dad41565ea68483f
+    m_SubObjectName: 
+  - m_AssetGUID: 2419439c6d6658a43aff751f39623513
     m_SubObjectName: 

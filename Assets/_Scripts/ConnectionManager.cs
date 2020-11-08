@@ -184,13 +184,13 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     public void DispatchGameData(JSONObject data)
     {
         data.AddField("sessionId", sessionId);
-        
         socket.Emit(UPDATE_GAMEDATA, data);
     }
 
     void OnUpdateGameData(SocketIOEvent e)
     {
         //if (_isHost) return;
+        Debug.Log("update game data");
 
         JSONObject cardContainer = e.data.GetField("cards");
         string[] cards = new string[cardContainer.list.Count];

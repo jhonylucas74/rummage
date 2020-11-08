@@ -257,12 +257,12 @@ PrefabInstance:
     - target: {fileID: 6137508431902438741, guid: 8a019910a4495ef4982dbdd543c2bfed,
         type: 3}
       propertyPath: Data.Name
-      value: apto3
+      value: apto8
       objectReference: {fileID: 0}
     - target: {fileID: 8363462051968387708, guid: 8a019910a4495ef4982dbdd543c2bfed,
         type: 3}
       propertyPath: m_Name
-      value: apto7
+      value: apto8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a019910a4495ef4982dbdd543c2bfed, type: 3}

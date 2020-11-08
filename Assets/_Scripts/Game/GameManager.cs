@@ -47,16 +47,25 @@ public class GameManager : Singleton<GameManager>
     {
         if (ConnectionManager.Instance.IsHost)
         {
-            foreach (Player player in Players)
-            {
-                player.Cards.Add(_deck.GetCard(CardType.Location).Data);
-                player.Cards.Add(_deck.GetCard(CardType.Weapon).Data);
-                player.Cards.Add(_deck.GetCard(CardType.Culprit).Data);
-            }
 
             JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
             data.AddField("turnOrder", SetTurnOrder());
             data.AddField("cards", SetGameCards());
+
+            int diff = 21 % Players.Count;
+            int minPlayerCards = (int) Mathf.Floor(21 /  Players.Count);
+
+            foreach (Player player in Players)
+            {
+                for (int i = 0; i < minPlayerCards; i ++) {
+                    player.Cards.Add(_deck.GetCard().Data);
+                }
+
+                if (diff > 0) {
+                    player.Cards.Add(_deck.GetCard().Data);
+                    diff--;
+                }
+            }
 
             ConnectionManager.Instance.DispatchGameData(data);
             ConnectionManager.Instance.DispatchPlayers();

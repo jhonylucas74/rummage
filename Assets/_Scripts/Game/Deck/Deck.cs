@@ -57,6 +57,21 @@ public class Deck
         }
     }
 
+    public Card GetCard() {
+        List<CardType> listTypes = new List<CardType>();
+
+        if (_locationsDeck.Count != 0)
+            listTypes.Add(CardType.Location);
+
+        if (_weaponsDeck.Count != 0)
+            listTypes.Add(CardType.Weapon);
+
+        if (_culpritsDeck.Count != 0)
+            listTypes.Add(CardType.Culprit);
+        
+        return GetCard(listTypes[Random.Range(0, listTypes.Count)]);
+    }
+
     public Card GetCard(CardType type)
     {
         Queue<Card> deck;
