@@ -69,7 +69,7 @@ public class Deck
         if (_culpritsDeck.Count != 0)
             listTypes.Add(CardType.Culprit);
         
-        return GetCard(listTypes[Random.Range(0, listTypes.Count)]);
+        return GetCard(listTypes[Random.Range(0, listTypes.Count - 1)]);
     }
 
     public Card GetCard(CardType type)
