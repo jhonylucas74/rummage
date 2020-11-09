@@ -7,6 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] TurnsUI _turnUI;
+    [SerializeField] Transform _playersContainer;
 
     Player _player;
     public Player Player { get => _player; }
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public List<Player> Players { get => _players; }
 
     string[] _turnOrder;
+    public string[] TurnOrder { get => _turnOrder; }
 
     Deck _deck;
     List<Card> _gameCards;
@@ -47,7 +49,6 @@ public class GameManager : Singleton<GameManager>
     {
         if (ConnectionManager.Instance.IsHost)
         {
-
             JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
             data.AddField("turnOrder", SetTurnOrder());
             data.AddField("cards", SetGameCards());
@@ -133,6 +134,20 @@ public class GameManager : Singleton<GameManager>
         await Task.Run(() => { while (_player.Cards.Count <= 0) { } });
 
         Events.OnPlayerCardsReady?.Invoke();
+
+        AsyncOperationHandle<GameObject> playerHandler;
+        AsyncOperationHandle<Sprite> spHandler;
+        foreach (var player in Players)
+        {
+            playerHandler = Addressables.InstantiateAsync("PlayerPrefab", _playersContainer);
+            spHandler = Addressables.LoadAssetAsync<Sprite>($"character{player.avatar}");
+            await playerHandler.Task;
+            await spHandler.Task;
+
+            playerHandler.Result.GetComponent<PlayerScript>().Id = player.id;
+            playerHandler.Result.GetComponent<SpriteRenderer>().sprite = spHandler.Result;
+        }
+
         _turnUI.Fill(turnOrder, () => Events.OnGameStart?.Invoke());
     }
 }

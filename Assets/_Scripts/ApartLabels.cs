@@ -19,7 +19,7 @@ public class ApartLabels : MonoBehaviour
         Events.OnPlayerMoveSelect -= OnPlayerMoveSelect;
     } 
 
-    void OnPlayerMoveSelect (int to) {
+    void OnPlayerMoveSelect (string id, int to) {
         transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.OutBack);
     }
 

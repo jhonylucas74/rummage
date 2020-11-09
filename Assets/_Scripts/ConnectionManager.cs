@@ -1,14 +1,15 @@
-
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using SocketIO;
+using System;
 
 public class ConnectionManager : Singleton<ConnectionManager> {
 
     const string UPDATE_PLAYERS = "updatePlayers";
     const string UPDATE_GAMEDATA = "updateGameData";
     const string JOIN_SUCCESS = "onJoinSucess";
+    const string PLAYER_TURN = "onPlayerTurn";
+    const string PLAYER_MOVE = "onPlayerMove";
 
     AudioSource _PlayerJoinAudio;
 
@@ -29,6 +30,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On(UPDATE_PLAYERS, OnUpdatedPlayers);
         socket.On(UPDATE_GAMEDATA, OnUpdateGameData);
         socket.On(JOIN_SUCCESS, OnJoinSucess);
+        socket.On(PLAYER_TURN, OnPlayerTurn);
+        socket.On(PLAYER_MOVE, OnPlayerMove);
 
         _PlayerJoinAudio = GetComponent<AudioSource>();
         
@@ -255,6 +258,36 @@ public class ConnectionManager : Singleton<ConnectionManager> {
                 Debug.LogWarning("no player");
             });
         }
+    }
+
+    public void SendCurrentPlayerTurn(string playerId)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        data.AddField("player_id", playerId);
+
+        socket.Emit(PLAYER_TURN, data);
+    }
+
+    void OnPlayerTurn(SocketIOEvent e)
+    {
+        Events.OnPlayerTurn?.Invoke(e.data.GetField("player_id").str);
+    }
+
+    public void SendPlayerMovement(string playerId, int toWaypoint)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        data.AddField("player_id", playerId);
+        data.AddField("to_waypoint", toWaypoint);
+
+        socket.Emit(PLAYER_MOVE, data);
+    }
+
+    void OnPlayerMove(SocketIOEvent e)
+    {
+        Debug.Log($"{e.data.list[0].str} {(int)e.data.list[1].f}");
+        Events.OnPlayerMoveSelect?.Invoke(e.data.GetField("player_id").str, (int)e.data.GetField("to_waypoint").f);
     }
 
     public void NewGameState (SocketIOEvent e) {

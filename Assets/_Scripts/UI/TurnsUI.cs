@@ -81,9 +81,9 @@ public class TurnsUI : MonoBehaviour
             }
         }
 
-        turn = (turn + 1) % maxPlayers;
+        ConnectionManager.Instance.SendCurrentPlayerTurn(GameManager.Instance.TurnOrder[turn]);
 
-        Events.OnPlayerTurn?.Invoke(GameManager.Instance.Player.id);
+        turn = (turn + 1) % maxPlayers;
     }
 
     void OnCheckHand () {
