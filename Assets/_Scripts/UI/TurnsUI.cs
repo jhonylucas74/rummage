@@ -29,6 +29,7 @@ public class TurnsUI : MonoBehaviour
         Events.OnEmptyHand += OnEmptyHand;
         Events.OnFindHand += OnFindHand;
         Events.OnGameStart += OnGameStart;
+        Events.OnPlayerTurn += OnPlayerTurn;
 
         _transform = GetComponent<RectTransform>();
         playersImages = new List<Image>();
@@ -65,6 +66,12 @@ public class TurnsUI : MonoBehaviour
     }
 
     void OnNextPlayerTurn () {
+        ConnectionManager.Instance.SendCurrentPlayerTurn(GameManager.Instance.TurnOrder[(turn + 1) % maxPlayers]);
+    }
+
+    void OnPlayerTurn(string pId) {
+        Debug.Log("dui chamado " + pId);
+        turn = System.Array.IndexOf(GameManager.Instance.TurnOrder, pId);
         DOTween.Play("playerTurn");
         handTurn = 0;
 
@@ -80,10 +87,6 @@ public class TurnsUI : MonoBehaviour
                 activeImage.color = activeColor;
             }
         }
-
-        ConnectionManager.Instance.SendCurrentPlayerTurn(GameManager.Instance.TurnOrder[turn]);
-
-        turn = (turn + 1) % maxPlayers;
     }
 
     void OnCheckHand () {
@@ -105,6 +108,7 @@ public class TurnsUI : MonoBehaviour
         AsyncOperationHandle<GameObject> goHandler;
         AsyncOperationHandle<Sprite> spriteHandler;
         int portraitIndex;
+        maxPlayers = turnOrder.Length;
 
         for (int i = 0; i < turnOrder.Length; i++)
         {

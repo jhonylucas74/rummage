@@ -157,7 +157,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         e.data.GetField("sessionId", delegate(JSONObject data) {
             sessionId = data.str;
             Events.OnSessionChange?.Invoke(data.str);
-            _userId = "host";
+            _userId = e.data.GetField("userId").str;
             GameManager.Instance.Players.Add(new Player(_userId));
             Debug.Log(sessionId);
         }, delegate(string name) {
@@ -271,6 +271,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
     void OnPlayerTurn(SocketIOEvent e)
     {
+        Debug.Log("on player turn");
         Events.OnPlayerTurn?.Invoke(e.data.GetField("player_id").str);
     }
 

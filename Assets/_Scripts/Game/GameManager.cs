@@ -139,8 +139,9 @@ public class GameManager : Singleton<GameManager>
         AsyncOperationHandle<GameObject> playerHandler;
         AsyncOperationHandle<Sprite> spHandler;
 
-        foreach (var player in Players)
+        for (int i = 0; i < Players.Count; i++)
         {
+            Player player = Players[i];
             playerHandler = Addressables.InstantiateAsync("PlayerPrefab", _playersContainer);
             spHandler = Addressables.LoadAssetAsync<Sprite>($"character{player.avatar}");
             await playerHandler.Task;

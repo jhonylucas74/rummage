@@ -36,6 +36,10 @@ public class PlayerActionsUI : MonoBehaviour
             _cg.interactable = true;
             _cg.blocksRaycasts = true;
             _cg.DOFade(1f, FADE_DURATION).SetEase(Ease.OutSine).Play();
+        } else {
+            _cg.interactable = false;
+            _cg.blocksRaycasts = false;
+            _cg.DOFade(0f, FADE_DURATION).SetEase(Ease.OutSine).Play();
         }
     }
 
@@ -48,7 +52,7 @@ public class PlayerActionsUI : MonoBehaviour
 
     void OnMenuPass()
     {
-        OnMenuMove();
+        Events.OnNextPlayerTurn?.Invoke();
     }
 
     void OnMenuDenounce()
