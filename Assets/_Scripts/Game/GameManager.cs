@@ -119,6 +119,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (!ConnectionManager.Instance.IsHost)
         {
+            _turnOrder = turnOrder;
             AsyncOperationHandle<Card> handler;
 
             foreach (string name in cards)
@@ -137,6 +138,7 @@ public class GameManager : Singleton<GameManager>
 
         AsyncOperationHandle<GameObject> playerHandler;
         AsyncOperationHandle<Sprite> spHandler;
+
         foreach (var player in Players)
         {
             playerHandler = Addressables.InstantiateAsync("PlayerPrefab", _playersContainer);
