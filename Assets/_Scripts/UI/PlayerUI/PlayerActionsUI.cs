@@ -57,7 +57,10 @@ public class PlayerActionsUI : MonoBehaviour
 
     void OnMenuDenounce()
     {
-        OnMenuMove();
+        DenounceManager.Instance.StartDenounce();
+        _cg.interactable = false;
+        _cg.blocksRaycasts = false;
+        _cg.DOFade(0f, FADE_DURATION).SetEase(Ease.OutSine).Play();
     }
 
     void OnMenuBack()

@@ -29,6 +29,7 @@ public static class Events {
     public static SimpleEvent OnPlayerCardsReady;
 
     public static StringEvent OnPlayerTurn;
+    public static IntArrayEvent OnDeclareDenounce;
 
     public static SimpleEvent OnPlayerMoveStart;
     public static StringIntEvent OnPlayerMoveSelect;
@@ -48,6 +49,7 @@ public delegate void FloatEvent(float f);
 public delegate void BoolEvent(bool b);
 public delegate void StringEvent(string s);
 public delegate void Vector3Event(Vector3 v3);
+public delegate void IntArrayEvent(int [] i);
 
 public delegate void ListStringEvent(List<string> list);
 public delegate void ListCardEvent(List<Card> list);

@@ -9,6 +9,7 @@ public class SelectApartMove : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData) {
         //Events.OnPlayerMoveSelect?.Invoke(apart);
+        DenounceManager.Instance.SetLocal(apart);
         ConnectionManager.Instance.SendPlayerMovement(GameManager.Instance.Player.id, apart);
     }
 }

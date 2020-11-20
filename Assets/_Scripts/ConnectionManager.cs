@@ -7,6 +7,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
     const string UPDATE_PLAYERS = "updatePlayers";
     const string UPDATE_GAMEDATA = "updateGameData";
+    const string DECLARE_DENOUNCE = "onDeclareDenounce";
     const string JOIN_SUCCESS = "onJoinSucess";
     const string PLAYER_TURN = "onPlayerTurn";
     const string PLAYER_MOVE = "onPlayerMove";
@@ -32,6 +33,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On(JOIN_SUCCESS, OnJoinSucess);
         socket.On(PLAYER_TURN, OnPlayerTurn);
         socket.On(PLAYER_MOVE, OnPlayerMove);
+        socket.On(DECLARE_DENOUNCE, OnDeclareDenounce);
 
         _PlayerJoinAudio = GetComponent<AudioSource>();
         
@@ -190,6 +192,21 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.Emit(UPDATE_GAMEDATA, data);
     }
 
+    public void DispatchDeclareDenuncie(int [] d)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        JSONObject denounce = new JSONObject(JSONObject.Type.ARRAY);
+
+        denounce.Add(d[0]);
+        denounce.Add(d[1]);
+        denounce.Add(d[2]);
+
+        data.AddField("denounce", denounce);
+        data.AddField("sessionId", sessionId);
+
+        socket.Emit(DECLARE_DENOUNCE, data);
+    }
+
     void OnUpdateGameData(SocketIOEvent e)
     {
         //if (_isHost) return;
@@ -273,6 +290,19 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     {
         Debug.Log("on player turn");
         Events.OnPlayerTurn?.Invoke(e.data.GetField("player_id").str);
+    }
+
+    void OnDeclareDenounce(SocketIOEvent e)
+    {
+        Debug.Log("on receive denounce");
+        int [] denounce = new int [3];
+
+        for (int i = 0; i < e.data.list[0].Count; i++) {
+            denounce[i] = (int) e.data.list[0][i].f;
+        }
+
+        Debug.Log(denounce[0] + "," + denounce[1] + ", " + denounce[2]);
+        Events.OnDeclareDenounce?.Invoke(denounce);
     }
 
     public void SendPlayerMovement(string playerId, int toWaypoint)
