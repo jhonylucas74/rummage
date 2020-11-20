@@ -9,7 +9,7 @@ public class NotesUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     RectTransform _transform;
 
     [SerializeField] float inPositionX = -136f;
-    [SerializeField] float outPositionX = 104f;
+    [SerializeField] float outPositionX = -79.7f;
 
     bool _canInteract;
 
@@ -31,14 +31,14 @@ public class NotesUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (!_canInteract) return;
 
-        DOMove(inPositionX, 1f);
+        DOMove(inPositionX, 0.5f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if(!_canInteract) return;
 
-        DOMove(outPositionX, 1f);
+        DOMove(outPositionX, 0.5f);
     }
 
     void DOMove(float posX, float duration)

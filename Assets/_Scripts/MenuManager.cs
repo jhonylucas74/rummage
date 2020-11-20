@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
         Events.OnGameStart += OnGameStart;
         Events.OnWaitingMenu += OnWaitingMenu;
         Events.OnJoinMenu += OnJoinMenu;
+        Events.OnPrepareGame += OnPrepareGame;
     }
 
     void OnDestroy () {
@@ -67,5 +68,12 @@ public class MenuManager : MonoBehaviour
         WaitingRoom.SetActive(false);
         JoinMenu.SetActive(true);
         _clickSound.Play();
+    }
+
+    void OnPrepareGame () {
+        ModeOptions.SetActive(false);
+        AvatarSelect.SetActive(false);
+        WaitingRoom.SetActive(false);
+        JoinMenu.SetActive(false);
     }
 }

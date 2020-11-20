@@ -20,11 +20,14 @@ public class NoteLabel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         textTransform = GetComponent<RectTransform>();
         originalX = textTransform.anchoredPosition.x;
         mtext = GetComponent<TMP_Text>();
+
         Events.OnPlayersUpdate += OnPlayersUpdate;
+        Events.OnPlayerCardsReady += OnPlayerCardsReady;
     }
 
     void OnDestroy () {
         Events.OnPlayersUpdate -= OnPlayersUpdate;
+        Events.OnPlayerCardsReady -= OnPlayerCardsReady;
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -55,6 +58,14 @@ public class NoteLabel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 if (players[i].avatar == playerIndex) {
                     mtext.text = players[i].name;
                 }
+            }
+        }
+    }
+
+    void OnPlayerCardsReady() {
+        for (int i = 0; i < GameManager.Instance.Player.Cards.Count; i++) {
+            if (mtext.text == GameManager.Instance.Player.Cards[i].Name) {
+                mtext.fontStyle = FontStyles.Strikethrough;
             }
         }
     }
