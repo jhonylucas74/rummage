@@ -19,6 +19,8 @@ public class DenounceManager : Singleton<DenounceManager>
 
     public TMP_Text denounceTitle;
     public TMP_Text winText;
+
+    List<string> revealedCards = new List<string>();
     void Start()
     {
         culpritMenu.SetActive(false);
@@ -169,6 +171,10 @@ public class DenounceManager : Singleton<DenounceManager>
         }
     }
 
+    public void AddToRevealed (string name) {
+        revealedCards.Add(name);
+    }
+
     void OnReceiveDenounce(string pId) {
         if (ConnectionManager.Instance.IsLocalUser(pId)) {
             int item = 0;
@@ -181,21 +187,21 @@ public class DenounceManager : Singleton<DenounceManager>
                 CardData card = GameManager.Instance.Player.Cards[i];
 
                 if (card.Type == CardType.Location) {
-                    if (card.Name == GetLocalName(receivedDenounce[0])) {
+                    if (card.Name == GetLocalName(receivedDenounce[0]) && !revealedCards.Exists(x => x == TurnsUI.Instance.Turn + card.Name)) {
                         revealItems[item].text = card.Name;
                         item++;
                     }
                 }
 
                 if (card.Type == CardType.Culprit) {
-                    if (card.Name == GetCulpritName(receivedDenounce[1])) {
+                    if (card.Name == GetCulpritName(receivedDenounce[1]) && !revealedCards.Exists(x => x == TurnsUI.Instance.Turn + card.Name)) {
                         revealItems[item].text = card.Name;
                         item++;
                     }
                 }
 
                 if (card.Type == CardType.Weapon) {
-                    if (card.Name == GetWeaponName(receivedDenounce[2])) {
+                    if (card.Name == GetWeaponName(receivedDenounce[2]) && !revealedCards.Exists(x => x == TurnsUI.Instance.Turn + card.Name)) {
                         revealItems[item].text = card.Name;
                         item++;
                     }

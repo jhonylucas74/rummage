@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class TurnsUI : MonoBehaviour
+public class TurnsUI : Singleton<TurnsUI>
 {
     RectTransform _transform;
 
@@ -17,6 +17,7 @@ public class TurnsUI : MonoBehaviour
     Image activeImage;
     
     int turn = 0;
+    public int Turn { get => turn; }
     int handTurn = 0;
 
     public Color disabledColor = new Vector4(0.69f, 0.69f, 0.69f, 1f);

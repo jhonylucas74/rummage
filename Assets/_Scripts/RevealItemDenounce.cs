@@ -15,6 +15,7 @@ public class RevealItemDenounce : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData) {
         if (_text.text != "") {
             ConnectionManager.Instance.SendStopDenounce(_text.text);
+            DenounceManager.Instance.AddToRevealed(TurnsUI.Instance.Turn + _text.text);
         }
     }
 }
