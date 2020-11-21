@@ -10,6 +10,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
     const string DECLARE_DENOUNCE = "onDeclareDenounce";
     const string JOIN_SUCCESS = "onJoinSucess";
     const string PLAYER_TURN = "onPlayerTurn";
+    const string RECEIVE_DENOUNCE = "onReceiveDenounce";
+    const string STOP_DENOUNCE = "onStopDenounce";
     const string PLAYER_MOVE = "onPlayerMove";
 
     AudioSource _PlayerJoinAudio;
@@ -32,8 +34,10 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.On(UPDATE_GAMEDATA, OnUpdateGameData);
         socket.On(JOIN_SUCCESS, OnJoinSucess);
         socket.On(PLAYER_TURN, OnPlayerTurn);
+        socket.On(RECEIVE_DENOUNCE, OnReceiveDenounce);
         socket.On(PLAYER_MOVE, OnPlayerMove);
         socket.On(DECLARE_DENOUNCE, OnDeclareDenounce);
+        socket.On(STOP_DENOUNCE, OnStopDenounce);
 
         _PlayerJoinAudio = GetComponent<AudioSource>();
         
@@ -286,10 +290,34 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         socket.Emit(PLAYER_TURN, data);
     }
 
+    public void SendReceiveDenounce(string playerId)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        data.AddField("player_id", playerId);
+
+        socket.Emit(RECEIVE_DENOUNCE, data);
+    }
+
+    public void SendStopDenounce(string name)
+    {
+        JSONObject data = new JSONObject(JSONObject.Type.OBJECT);
+        data.AddField("sessionId", sessionId);
+        data.AddField("index", name);
+
+        socket.Emit(STOP_DENOUNCE, data);
+    }
+
     void OnPlayerTurn(SocketIOEvent e)
     {
         Debug.Log("on player turn");
         Events.OnPlayerTurn?.Invoke(e.data.GetField("player_id").str);
+    }
+
+    void OnReceiveDenounce(SocketIOEvent e)
+    {
+        Debug.Log("on receive denounce ");
+        Events.OnReceiveDenounce?.Invoke(e.data.GetField("player_id").str);
     }
 
     void OnDeclareDenounce(SocketIOEvent e)
@@ -303,6 +331,11 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
         Debug.Log(denounce[0] + "," + denounce[1] + ", " + denounce[2]);
         Events.OnDeclareDenounce?.Invoke(denounce);
+    }
+
+    void OnStopDenounce(SocketIOEvent e) {
+        Debug.Log("On Stop Denounce");
+        Events.OnStopDenounce?.Invoke(e.data.GetField("index").str);
     }
 
     public void SendPlayerMovement(string playerId, int toWaypoint)
@@ -323,6 +356,10 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
     public void NewGameState (SocketIOEvent e) {
 
+    }
+
+    public bool IsLocalUser(string id) {
+        return _userId == id;
     }
 
     /*void Update() {   

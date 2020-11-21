@@ -15,8 +15,10 @@ public class TurnsUI : MonoBehaviour
     RectTransform [] playersTransforms = new RectTransform[8];
     int maxPlayers = 8;
     Image activeImage;
+    
     int turn = 0;
-    int handTurn;
+    int handTurn = 0;
+
     public Color disabledColor = new Vector4(0.69f, 0.69f, 0.69f, 1f);
     public Color activeColor = new Vector4(1f, 1f, 1f, 1f);
     public Color noneCardColor;
@@ -30,6 +32,8 @@ public class TurnsUI : MonoBehaviour
         Events.OnFindHand += OnFindHand;
         Events.OnGameStart += OnGameStart;
         Events.OnPlayerTurn += OnPlayerTurn;
+        Events.OnReceiveDenounce += OnReceiveDenounce;
+        Events.OnStopDenounce += OnStopDenounce;
 
         _transform = GetComponent<RectTransform>();
         playersImages = new List<Image>();
@@ -48,6 +52,9 @@ public class TurnsUI : MonoBehaviour
         Events.OnEmptyHand -= OnEmptyHand;
         Events.OnFindHand -= OnFindHand;
         Events.OnGameStart -= OnGameStart;
+        Events.OnPlayerTurn -= OnPlayerTurn;
+        Events.OnReceiveDenounce -= OnReceiveDenounce;
+        Events.OnStopDenounce -= OnStopDenounce;
     }
 
     void OnGameStart () {
@@ -70,10 +77,9 @@ public class TurnsUI : MonoBehaviour
     }
 
     void OnPlayerTurn(string pId) {
-        Debug.Log("dui chamado " + pId);
         turn = System.Array.IndexOf(GameManager.Instance.TurnOrder, pId);
+        handTurn = turn;
         DOTween.Play("playerTurn");
-        handTurn = 0;
 
         if (activeImage) {
             activeImage.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -89,17 +95,46 @@ public class TurnsUI : MonoBehaviour
         }
     }
 
+    void OnReceiveDenounce(string pId) {
+        handTurn = System.Array.IndexOf(GameManager.Instance.TurnOrder, pId);
+
+        for (int i = 0; i < playersImages.Count; i++) {
+            if (i == handTurn) {
+                playersImages[i].color = checkCardColor;
+            }
+        }
+
+        if (ConnectionManager.Instance.IsLocalUser(pId)) {
+            if (handTurn == turn) {
+                Events.OnNextPlayerTurn?.Invoke();
+            }
+        }
+    }
+
+    void OnStopDenounce (string name) {
+        if (turn == System.Array.IndexOf(GameManager.Instance.TurnOrder, GameManager.Instance.Player.id)) {
+            DenounceManager.Instance.ShowReveledCard("You received: " + name);
+        } else {
+            string id = GameManager.Instance.TurnOrder[handTurn];
+
+            for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
+                if (GameManager.Instance.Players[i].id == id) {
+                    DenounceManager.Instance.ShowReveledCard("Player " + GameManager.Instance.Players[i].name + " revealed one item.");
+                }
+            }
+        }
+    }
+
     void OnCheckHand () {
-        handTurn += 1;
-        playersImages[(handTurn + (turn - 1)) % maxPlayers].color = checkCardColor;
+        ConnectionManager.Instance.SendReceiveDenounce(GameManager.Instance.TurnOrder[(handTurn + 1) % maxPlayers]);
     }
 
     void OnEmptyHand () {
-        playersImages[(handTurn + (turn - 1)) % maxPlayers].color = noneCardColor;
+        playersImages[(handTurn + turn) % maxPlayers].color = noneCardColor;
     }
 
     void OnFindHand () {
-        playersImages[(handTurn + (turn - 1)) % maxPlayers].color = sucessCardColor;
+        playersImages[(handTurn + turn) % maxPlayers].color = sucessCardColor;
     }
 
     public async void Fill(string[] turnOrder, SimpleEvent callback = null)

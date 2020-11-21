@@ -85,6 +85,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disabledColor: {r: 0.69, g: 0.69, b: 0.69, a: 1}
   activeColor: {r: 1, g: 1, b: 1, a: 1}
-  noneCardColor: {r: 0.9811321, g: 0.36561054, b: 0.36561054, a: 0}
-  checkCardColor: {r: 0.23113209, g: 0.89409477, b: 1, a: 0}
-  sucessCardColor: {r: 0.34191194, g: 1, b: 0.25943398, a: 0}
+  noneCardColor: {r: 0.9811321, g: 0.36561054, b: 0.36561054, a: 1}
+  checkCardColor: {r: 0.23113209, g: 0.89409477, b: 1, a: 1}
+  sucessCardColor: {r: 0.34191194, g: 1, b: 0.25943398, a: 1}

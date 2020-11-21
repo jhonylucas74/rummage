@@ -30,6 +30,8 @@ public static class Events {
 
     public static StringEvent OnPlayerTurn;
     public static IntArrayEvent OnDeclareDenounce;
+    public static StringEvent OnReceiveDenounce;
+    public static StringEvent OnStopDenounce;
 
     public static SimpleEvent OnPlayerMoveStart;
     public static StringIntEvent OnPlayerMoveSelect;
