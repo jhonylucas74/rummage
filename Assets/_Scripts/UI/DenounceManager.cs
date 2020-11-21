@@ -15,8 +15,10 @@ public class DenounceManager : Singleton<DenounceManager>
 
     public TMP_Text [] revealItems;
     public GameObject PassMenu;
+    public GameObject WinMenu;
 
     public TMP_Text denounceTitle;
+    public TMP_Text winText;
     void Start()
     {
         culpritMenu.SetActive(false);
@@ -24,6 +26,7 @@ public class DenounceManager : Singleton<DenounceManager>
         DenounceBox.SetActive(false);
         RevealMenu.SetActive(false);
         PassMenu.SetActive(false);
+        WinMenu.SetActive(false);
         Events.OnDeclareDenounce += OnDeclareDenounce;
         Events.OnReceiveDenounce += OnReceiveDenounce;
         Events.OnStopDenounce += OnStopDenounce;
@@ -66,11 +69,11 @@ public class DenounceManager : Singleton<DenounceManager>
         ConnectionManager.Instance.DispatchDeclareDenuncie(denounce);
     }
 
-    string GetLocalName (int index) {
+    public string GetLocalName (int index) {
         return "Apart. " + index;
     }
 
-    string GetWeaponName (int index) {
+    public string GetWeaponName (int index) {
         switch (index) {
             case 0:
                 return "Frying Pan";
@@ -93,7 +96,7 @@ public class DenounceManager : Singleton<DenounceManager>
         }
     }
 
-    string GetCulpritName (int index) {
+    public string GetCulpritName (int index) {
         switch (index) {
             case 0:
                 return "Comunist";
@@ -116,8 +119,13 @@ public class DenounceManager : Singleton<DenounceManager>
         }
     }
 
+    public void ShowWinMsg (string name) {
+        WinMenu.SetActive(true);
+        winText.text = name + " win!";
+    }
+
     void OnDeclareDenounce (int [] d) {
-        DenounceBox.SetActive(true);
+        DenounceBox.SetActive(true);        
         receivedDenounce = d;
         denounceTitle.text = GetLocalName(d[0]) + " - " + GetCulpritName(d[1]) + " - " + GetWeaponName(d[2]);
         Events.OnCheckHand?.Invoke();

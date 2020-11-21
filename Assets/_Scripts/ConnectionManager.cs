@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using SocketIO;
+using UnityEngine.SceneManagement;
 using System;
 
 public class ConnectionManager : Singleton<ConnectionManager> {
@@ -217,10 +218,10 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         Debug.Log("update game data");
 
         JSONObject cardContainer = e.data.GetField("cards");
-        string[] cards = new string[cardContainer.list.Count];
+        CardData [] cards = new CardData[cardContainer.list.Count];
         for (int i = 0; i < cardContainer.list.Count; i++)
         {
-            cards[i] = cardContainer.list[i].GetField("card").str;
+            cards[i] = new CardData((CardType) cardContainer.list[i].GetField("type").n, cardContainer.list[i].GetField("card").str);
         }
 
         JSONObject orderContainer = e.data.GetField("turnOrder");
@@ -362,25 +363,9 @@ public class ConnectionManager : Singleton<ConnectionManager> {
         return _userId == id;
     }
 
-    /*void Update() {   
-        if (Input.GetKeyDown("space")){
-            Events.OnNextPlayerTurn?.Invoke();
+    void Update() {   
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("SampleScene");
         }
-        
-        if (Input.GetKeyDown(KeyCode.Q)){
-            Events.OnGameStart?.Invoke(new GameState());
-        }
-
-        if (Input.GetKeyDown(KeyCode.A)){
-            Events.OnCheckHand?.Invoke();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S)){
-            Events.OnEmptyHand?.Invoke();
-        }
-
-        if (Input.GetKeyDown(KeyCode.D)){
-            Events.OnFindHand?.Invoke();
-        }
-    }*/
+    }
 }

@@ -34,6 +34,7 @@ public class TurnsUI : MonoBehaviour
         Events.OnPlayerTurn += OnPlayerTurn;
         Events.OnReceiveDenounce += OnReceiveDenounce;
         Events.OnStopDenounce += OnStopDenounce;
+        Events.OnDeclareDenounce += OnDeclareDenounce;
 
         _transform = GetComponent<RectTransform>();
         playersImages = new List<Image>();
@@ -55,6 +56,7 @@ public class TurnsUI : MonoBehaviour
         Events.OnPlayerTurn -= OnPlayerTurn;
         Events.OnReceiveDenounce -= OnReceiveDenounce;
         Events.OnStopDenounce -= OnStopDenounce;
+        Events.OnDeclareDenounce -= OnDeclareDenounce;
     }
 
     void OnGameStart () {
@@ -120,6 +122,96 @@ public class TurnsUI : MonoBehaviour
             for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
                 if (GameManager.Instance.Players[i].id == id) {
                     DenounceManager.Instance.ShowReveledCard("Player " + GameManager.Instance.Players[i].name + " revealed one item.");
+                }
+            }
+        }
+    }
+
+    string GetCardAdress(string name) {
+        switch (name)
+        {
+            case "Comunist":
+                return "comunist";
+            case "E-girl":
+                return "egirl";
+            case "Raged":
+                return "raged";
+            case "Pet Dad":
+                return "petdad";
+            case "Homeless":
+                return "homeless";
+            case "Emo":
+                return "emo";
+            case "Bearded":
+                return "bearded";
+            case "Competitive":
+                return "competitive";
+            case "Frying Pan":
+                return "fryingpan";
+            case "Hammer":
+                return "hammer";
+            case "Ice Pick":
+                return "icepick";
+            case "Kitchen Board":
+                return "kitchenboard";
+            case "Knife":
+                return "knife";
+            case "Olive Oil":
+                return "oliveoil";
+            case "Rolling Pin":
+                return "rollingpin";
+            case "Scissor":
+                return "scissor";
+            case "Apart. 1":
+                return "apto1";
+            case "Apart. 2":
+                return "apto2";
+            case "Apart. 3":
+                return "apto3";
+            case "Apart. 4":
+                return "apto4";
+            case "Apart. 5":
+                return "apto5";
+            case "Apart. 6":
+                return "apto6";
+            case "Apart. 7":
+                return "apto7";
+            case "Apart. 8":
+                return "apto8";
+            default:
+                return "";
+        }
+    }
+
+    void OnDeclareDenounce (int [] d) {
+        List<Card> cards = GameManager.Instance.GameCards;
+        CardData cardLocal = null;
+        CardData cardWeapon = null;
+        CardData cardCulprit = null;
+
+        for (int i = 0; i < cards.Count; i++) {
+            if (cards[i].Data.Type == CardType.Location) {
+                cardLocal = cards[i].Data;
+            }
+
+            if (cards[i].Data.Type == CardType.Culprit) {
+                cardCulprit = cards[i].Data;
+            }
+
+            if (cards[i].Data.Type == CardType.Weapon) {
+                cardWeapon = cards[i].Data;
+            }
+        }
+
+        if (cardLocal.Name == DenounceManager.Instance.GetLocalName(d[0]) &&
+            cardCulprit.Name == DenounceManager.Instance.GetCulpritName(d[1]) &&
+            cardWeapon.Name == DenounceManager.Instance.GetWeaponName(d[2])
+        ) {
+            string id = GameManager.Instance.TurnOrder[turn];
+
+            for (int i = 0; i < GameManager.Instance.Players.Count; i++) {
+                if (GameManager.Instance.Players[i].id == id) {
+                    DenounceManager.Instance.ShowWinMsg(GameManager.Instance.Players[i].name);
                 }
             }
         }

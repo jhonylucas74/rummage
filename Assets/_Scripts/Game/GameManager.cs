@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     Deck _deck;
     List<Card> _gameCards;
+    public List<Card> GameCards { get => _gameCards; }
 
     protected override void Awake()
     {
@@ -86,6 +87,7 @@ public class GameManager : Singleton<GameManager>
         {
             obj = new JSONObject(JSONObject.Type.OBJECT);
             obj.AddField("card", _gameCards[i].Data.Name);
+            obj.AddField("type", (int) _gameCards[i].Data.Type);
             cardsArray.Add(obj);
         }
 
@@ -115,19 +117,14 @@ public class GameManager : Singleton<GameManager>
         _player = _players.Find(x => x.isMe);
     }
 
-    public async void SetGameData(string[] turnOrder, string[] cards)
+    public async void SetGameData(string[] turnOrder, CardData [] cards)
     {
         if (!ConnectionManager.Instance.IsHost)
         {
             _turnOrder = turnOrder;
-            AsyncOperationHandle<Card> handler;
 
-            foreach (string name in cards)
-            {
-                handler = Addressables.LoadAssetAsync<Card>(name);
-                await handler.Task;
-                    
-                _gameCards.Add(handler.Result);
+            for (int i = 0; i < 3; i++) {
+                _gameCards.Add(new Card(cards[i]));
             }
         }
 
