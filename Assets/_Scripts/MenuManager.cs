@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject AvatarSelect;
     public GameObject WaitingRoom;
     public GameObject JoinMenu;
+    public GameObject StartBtn;
     AudioSource _clickSound; 
 
     void Start() {
@@ -60,6 +61,7 @@ public class MenuManager : MonoBehaviour
         WaitingRoom.SetActive(true);
         JoinMenu.SetActive(false);
         _clickSound.Play();
+        StartBtn.SetActive(ConnectionManager.Instance.IsHost);
     }
 
     void OnJoinMenu () {

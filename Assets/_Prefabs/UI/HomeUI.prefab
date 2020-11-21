@@ -4615,6 +4615,7 @@ MonoBehaviour:
   AvatarSelect: {fileID: 2278170274850108090}
   WaitingRoom: {fileID: 5685851895731725041}
   JoinMenu: {fileID: 4104121346867608809}
+  StartBtn: {fileID: 610059673472082111}
 --- !u!114 &7052033615623057086
 MonoBehaviour:
   m_ObjectHideFlags: 0

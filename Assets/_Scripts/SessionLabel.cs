@@ -16,6 +16,7 @@ public class SessionLabel : MonoBehaviour {
     }
 
     void OnSessionChange(string name) {
+        Debug.Log(">>" + name);
         mtext.text = "SESSION: " + name;
     }
 }

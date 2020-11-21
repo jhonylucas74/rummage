@@ -19,6 +19,8 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
     private SocketIOComponent socket;
     string sessionId;
+    public string SessionId { get => sessionId; }
+
     int playerAvatar = 0;
     string playerName = "";
     bool _isHost = false;
@@ -86,6 +88,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
 
     void OnSessionChange (string name) {
         sessionId = name;
+        Debug.Log("--ZZ-- " + name);
     }
 
     void OnJoinSession () {
@@ -120,6 +123,7 @@ public class ConnectionManager : Singleton<ConnectionManager> {
             data.AddField("sessionId", sessionId);
 
             socket.Emit("updateAvatar", data);
+            StartCoroutine(UpdateWaitingMenu());
         }
     }
 
