@@ -451,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionsCG: {fileID: 1432382334026567124}
   _backCG: {fileID: 1432382334660063034}
+  move: {fileID: 1432382332804418405}
+  denounce: {fileID: 1432382334680735388}
 --- !u!1 &1432382334510958471
 GameObject:
   m_ObjectHideFlags: 0

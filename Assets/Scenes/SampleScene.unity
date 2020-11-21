@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   cost: 0
   Neighbors:
   - {fileID: 1290822872}
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 8
   cost: 0
   Neighbors:
   - {fileID: 1832635800}
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 3
   cost: 0
   Neighbors:
   - {fileID: 2106534654}
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 6
   cost: 0
   Neighbors:
   - {fileID: 1427483323}
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   cost: 0
   Neighbors:
   - {fileID: 1407223946}
@@ -2949,7 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 5
   cost: 0
   Neighbors:
   - {fileID: 1528641998}
@@ -3109,7 +3109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557507823}
-  m_LocalRotation: {x: 0.00025314602, y: 0.9952801, z: 0.0025971846, w: -0.097009346}
+  m_LocalRotation: {x: 0.00025314454, y: 0.9952801, z: 0.0025971702, w: -0.097009316}
   m_LocalPosition: {x: -0.87294614, y: -0.742779, z: 2.870407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4062,7 +4062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 7
   cost: 0
   Neighbors:
   - {fileID: 1434407126}
@@ -4805,7 +4805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6aa3276eac0504287f705641f3b9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 4
   cost: 0
   Neighbors:
   - {fileID: 198273379}
@@ -5099,7 +5099,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0.000000011445074, z: 7.1e-43, w: -0.000000011444293}
+  m_BoundingSphereOverride: {x: NaN, y: 0, z: NaN, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

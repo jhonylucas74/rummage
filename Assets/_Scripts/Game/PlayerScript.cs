@@ -6,8 +6,10 @@ public class PlayerScript : MonoBehaviour {
     public string Id;
 
     List<Waypoint> waypoints;
-    public float speed = 1.0f;
+    Waypoint last;
+    public float speed = 2.0f;
     bool _running = false;
+    int energy = 4;
 
     public int moveFrom = 0;
 
@@ -35,23 +37,30 @@ public class PlayerScript : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[0].transform.position, step);
 
             if (Vector3.Distance(transform.position, waypoints[0].transform.position) < 0.001f) {
-                if (waypoints.Count == 1) {
+                if (waypoints.Count == 1 || energy == 1) {
                     moveFrom = WaypointFinder.Instance.getWaypointIndex(waypoints[0]);
                 }
+
+                last = waypoints[0];
                 waypoints.RemoveAt(0);
+                energy -= 1;
             }
         }
 
         if (_running == false && waypoints.Count > 0) {
             _running = true;
+            energy = 4;
             transform.Rotate(0, 0, -16f, Space.Self);
             DOTween.Play("playerMove");
         }
 
-        if (_running && waypoints.Count == 0) {
+        if (_running && waypoints.Count == 0 || _running && energy == 0) {
             _running = false;
+            waypoints.Clear();
             DOTween.Pause("playerMove");
             transform.localRotation = Quaternion.identity;
+
+            Events.OnPlayerMoveEnd?.Invoke(last.id > 0 && last.id < 9);
         }
     }
 

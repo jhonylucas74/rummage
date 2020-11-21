@@ -35,6 +35,7 @@ public static class Events {
 
     public static SimpleEvent OnPlayerMoveStart;
     public static StringIntEvent OnPlayerMoveSelect;
+    public static BoolEvent OnPlayerMoveEnd;
 
     public static SimpleEvent OnMenuMove;
     public static SimpleEvent OnMenuDenounce;

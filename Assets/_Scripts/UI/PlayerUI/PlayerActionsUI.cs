@@ -8,6 +8,8 @@ public class PlayerActionsUI : MonoBehaviour
     CanvasGroup _cg;
     [SerializeField] CanvasGroup _actionsCG;
     [SerializeField] CanvasGroup _backCG;
+    [SerializeField] GameObject move;
+    [SerializeField] GameObject denounce;
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class PlayerActionsUI : MonoBehaviour
         Events.OnMenuPass += OnMenuPass;
         Events.OnMenuDenounce += OnMenuDenounce;
         Events.OnMenuBack += OnMenuBack;
+        Events.OnPlayerMoveEnd += OnPlayerMoveEnd;
 
         _cg = GetComponent<CanvasGroup>();
     }
@@ -27,10 +30,14 @@ public class PlayerActionsUI : MonoBehaviour
         Events.OnMenuPass -= OnMenuPass;
         Events.OnMenuDenounce -= OnMenuDenounce;
         Events.OnMenuBack -= OnMenuBack;
+        Events.OnPlayerMoveEnd -= OnPlayerMoveEnd;
     }
 
     void OnPlayerTurn(string pId)
     {
+        move.SetActive(true);
+        denounce.SetActive(false);
+
         if(GameManager.Instance.Player.id.Equals(pId))
         {
             _cg.interactable = true;
@@ -45,9 +52,12 @@ public class PlayerActionsUI : MonoBehaviour
 
     void OnMenuMove()
     {
-        ToggleActions(false);
-        ToggleBack(true);
+        move.SetActive(false);
         Events.OnPlayerMoveStart?.Invoke();
+    }
+
+    void OnPlayerMoveEnd (bool valid) {
+        denounce.SetActive(valid);
     }
 
     void OnMenuPass()
